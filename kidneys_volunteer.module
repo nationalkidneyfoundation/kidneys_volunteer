@@ -1,0 +1,145 @@
+<?php
+/**
+ * @file
+ * Code for the Volunteer Management feature.
+ */
+
+include_once 'kidneys_volunteer.features.inc';
+
+/**
+ * Implements hook_salesforce_query_alter().
+ */
+function kidneys_volunteer_salesforce_query_alter(SalesforceSelectQuery &$query) {
+  // Add office to query.
+  if ($query->objectType == 'Volunteer_Job__c') {
+    $query->fields[] = 'campaign__r.NKF_Office__c';
+    $query->fields[] = 'campaign__r.Public_Campaign_Name__c';
+  }
+}
+/**
+ * Implements hook_salesforce_pull_entity_value_alter().
+ */
+function kidneys_volunteer_salesforce_pull_entity_value_alter(&$value, $field_map, $sf_object) {
+  if (!empty($sf_object['Campaign__r']) && !empty($sf_object['Campaign__r']['NKF_Office__c']) && $field_map['drupal_field']['fieldmap_value'] == 'field_base_related_office') {
+    $sf_office_id = $sf_object['Campaign__r']['NKF_Office__c'];
+    $mapping_object = salesforce_mapping_object_load_by_sfid($sf_office_id);
+    if ($mapping_object) {
+      $value = $mapping_object->entity_id;
+    } else {
+      // need to pull in this object from SF
+      watchdog('kidneys_volunteer' , 'missing nkf office for ' . $value);
+    }
+  }
+  if (!empty($sf_object['Campaign__r']) && !empty($sf_object['Campaign__r']['Public_Campaign_Name__c']) && $field_map['drupal_field']['fieldmap_value'] == 'field_vol_campaign_name') {
+    $value = $sf_object['Campaign__r']['Public_Campaign_Name__c'];
+  }
+}
+
+function kidneys_volunteer_salesforce_push_params_alter(&$params, $mapping, $entity_wrapper) {
+  if ($entity_wrapper->type()== 'entityform') {
+    //watchdog('vm_push_wr', '<pre>' . print_r($entity_wrapper ,1) . '</pre>');
+    //watchdog('vm_push_wr_id', '<pre>' . print_r($entity_wrapper->getIdentifier() ,1) . '</pre>');
+    //watchdog('vm_push_wr_op', '<pre>' . print_r($entity_wrapper->field_vol_related_opp->value() ,1) . '</pre>');
+    //watchdog('vm_push_wr_con', '<pre>' . print_r($entity_wrapper->field_base_related_contact->value() ,1) . '</pre>');
+    //watchdog('vm_push_wr_con', '<pre>' . print_r($entity_wrapper->field_base_related_contact->value()->contact_id ,1) . '</pre>');
+    if (array_key_exists('Volunteer_Job__c', $params)) {
+      $mapping_object = salesforce_mapping_object_load_by_drupal('node', $entity_wrapper->field_vol_related_opp->value()->nid);
+      if (isset($mapping_object)) {
+        $params['Volunteer_Job__c'] = $mapping_object->salesforce_id;
+      }
+    }
+    if (array_key_exists('Contact__c', $params)) {
+      $mapping_object = salesforce_mapping_object_load_by_drupal('redhen_contact', $entity_wrapper->field_base_related_contact->value()->contact_id);
+      if (isset($mapping_object)) {
+        $params['Contact__c'] = $mapping_object->salesforce_id;
+      }
+    }
+  }
+  watchdog('vm_push_params', '<pre>'.print_r($params, 1). '</pre>');
+}
+
+/**
+ * Implements hook_form_FORM_ID_alter()
+ */
+function kidneys_volunteer_form_alter(&$form, &$form_state, $form_id) {
+  //print 'FORMID: ' . $form_id .'<br>';
+  if ($form_id == 'volunteer_application_entityform_edit_form') {
+    $form['field_base_related_contact']['#access'] = FALSE;
+    $form['field_vol_related_opp']['#access'] = FALSE;
+    $form['field_vol_related_sf_campaign']['#access'] = FALSE;
+    if ((arg(2) && $vo_id = arg(2)) || (!empty($_GET['volunteer-opportunity']) && $vo_id = $_GET['volunteer-opportunity'])) {
+      $vo = node_load($vo_id);
+      //print '<pre>';
+      //print_r($vo);
+      //print '</pre>';
+
+      if ($vo) {
+        //$form['field_vol_related_opp'][LANGUAGE_UNDEFINED][0]['target_id']['#default_value'] = $vo->nid;
+        $form['field_vol_related_opp'][LANGUAGE_NONE][0]['target_id']['#default_value'] = 'Opp (' .$vo->nid . ')';
+        //$body = field_view_field('node', $vo, 'body', array(
+        //    'label'=> 'hidden'
+        //  ));
+        //$body = render($body);
+        //$form['_job']['#markup'] = '<div class="grid-cell width--100 padding--lg text-align--center bg--gray-4 color--white"><h3 class="display--none padding-x--xxs">Position you\'re applying for</h3>';
+        //$form['_job']['#markup'] .= '<div class="font-size--xl padding-x--xxs">' . $vo->title . '</div>';
+        //$form['_job']['#markup'] .= '<div class="color--gray-1 padding-x--xxs">' . $body . '</div></div>';
+        //$form['_job']['#weight'] = 0;
+        //$form['actions']['#weight'] = 1001;
+        if ($vo->field_vol_related_sf_campaign) {
+            $form['field_vol_related_sf_campaign'][LANGUAGE_NONE][0]['value']['#default_value'] = $vo->field_vol_related_sf_campaign[LANGUAGE_NONE][0]['value'];
+
+        }
+
+      }
+    }
+    $form['#prefix'] = '<div class="grid max-width--xxl bg--white  display--inline-block">';
+    $form['#suffix'] = '</div>';
+    $form['field_base_address'][LANGUAGE_NONE][0]['country']['#access'] = FALSE;
+    $form['field_base_first_name']['#attributes']['class'][] = 'grid-cell sm--width--50 width--100 padding-x--xxs';
+    $form['field_base_last_name']['#attributes']['class'][] = 'grid-cell sm--width--50 width--100 padding-x--xxs';
+    $form['field_base_email']['#attributes']['class'][] = 'grid-cell sm--width--50 width--100 padding-x--xxs';
+    $form['field_base_phone']['#attributes']['class'][] = 'grid-cell sm--width--50 width--100 padding-x--xxs';
+    $form['field_vol_interest_admin']['#attributes']['class'][] = 'grid-cell width--100 padding-x--xxs';
+    $form['field_vol_interest_advocacy']['#attributes']['class'][] = 'grid-cell width--100 padding-x--xxs';
+    $form['field_vol_interest_prof_review']['#attributes']['class'][] = 'grid-cell width--100 padding-x--xxs';
+    $form['field_vol_interest_screening']['#attributes']['class'][] = 'grid-cell width--100 padding-x--xxs';
+    $form['field_vol_interest_walks']['#attributes']['class'][] = 'grid-cell width--100 padding-x--xxs';
+    $form['field_vol_interest_events']['#attributes']['class'][] = 'grid-cell width--100 padding-x--xxs';
+    $form['field_vol_available_daystimes']['#attributes']['class'][] = 'grid-cell width--100 padding-x--xxs';
+    $form['field_vol_available_notes']['#attributes']['class'][] = 'grid-cell width--100 padding-x--xxs';
+
+    $form['field_base_address'][LANGUAGE_NONE][0]['#type'] = 'container';
+    $form['field_base_address'][LANGUAGE_NONE][0]['street_block']['#attributes']['class'][] = 'grid width--100';
+    $form['field_base_address'][LANGUAGE_NONE][0]['locality_block']['#attributes']['class'][] = 'grid width--100';
+    $form['field_base_address'][LANGUAGE_NONE][0]['street_block']['thoroughfare']['#prefix'] = '<div class="grid-cell width--100 padding-x--xxs">';
+    $form['field_base_address'][LANGUAGE_NONE][0]['street_block']['thoroughfare']['#suffix'] = '</div>';
+    $form['field_base_address'][LANGUAGE_NONE][0]['street_block']['thoroughfare']['#attributes']['class'][] = 'width--100';
+    $form['field_base_address'][LANGUAGE_NONE][0]['locality_block']['locality']['#prefix']= '<div class="grid-cell sm--width--55 width--100 padding-x--xxs">';
+    $form['field_base_address'][LANGUAGE_NONE][0]['locality_block']['locality']['#suffix']= '</div>';
+    $form['field_base_address'][LANGUAGE_NONE][0]['locality_block']['locality']['#attributes']['class'][] = 'width--100';
+    $form['field_base_address'][LANGUAGE_NONE][0]['locality_block']['administrative_area']['#prefix']= '<div class="grid-cell sm--width--20 width--100 padding-x--xxs">';
+    $form['field_base_address'][LANGUAGE_NONE][0]['locality_block']['administrative_area']['#suffix']= '</div>';
+    $form['field_base_address'][LANGUAGE_NONE][0]['locality_block']['administrative_area']['#attributes']['class'][] = 'width--100';
+    $form['field_base_address'][LANGUAGE_NONE][0]['locality_block']['postal_code']['#prefix']= '<div class="grid-cell sm--width--25 width--100 padding-x--xxs">';
+    $form['field_base_address'][LANGUAGE_NONE][0]['locality_block']['postal_code']['#suffix']= '</div>';
+    $form['field_base_address'][LANGUAGE_NONE][0]['locality_block']['postal_code']['#attributes']['class'][] = 'width--100';
+
+    $form['actions']['#attributes']['class'][] = 'padding-x--xl margin-top--lg margin-bottom--md text-align--center';
+    $form['actions']['submit']['#attributes']['class'][] = 'grid-cell button--green caps bold';
+
+    //print '<pre>';
+    //print_r(array_keys($form['actions']));
+    //print_r(($form['actions']));
+    //print '</pre>';
+    array_unshift($form['#validate'], 'kidneys_volunteer_app_form_validate');
+  }
+}
+
+function kidneys_volunteer_app_form_validate($form, &$form_state) {
+
+  if (!empty($form_state['values']['field_base_email'][LANGUAGE_NONE])) {
+    if (!valid_email_address($form_state['values']['field_base_email'][LANGUAGE_NONE][0]['value'])) {
+      form_set_error($name = 'field_base_email', $message = 'Please enter a valid email address.');
+    }
+  }
+}
