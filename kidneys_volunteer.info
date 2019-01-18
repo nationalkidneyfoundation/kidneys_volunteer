@@ -3,7 +3,6 @@ core = 7.x
 package = NKF
 version = 7.x-1.0
 dependencies[] = ctools
-dependencies[] = eck
 dependencies[] = entityform
 dependencies[] = features
 dependencies[] = field_group

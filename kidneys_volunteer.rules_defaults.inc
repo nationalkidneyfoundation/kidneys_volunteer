@@ -81,28 +81,6 @@ function kidneys_volunteer_default_rules_configuration() {
       ]
     }
   }');
-  $items['rules_volunteer_application_save'] = entity_import('rules_config', '{ "rules_volunteer_application_save" : {
-      "LABEL" : "Volunteer Application Save",
-      "PLUGIN" : "reaction rule",
-      "ACTIVE" : false,
-      "OWNER" : "rules",
-      "REQUIRES" : [ "rules", "eck" ],
-      "ON" : { "volunteer_application_presave" : [] },
-      "IF" : [
-        { "entity_has_field" : {
-            "entity" : [ "volunteer-application" ],
-            "field" : "field_base_related_contact"
-          }
-        },
-        { "data_is_empty" : { "data" : [ "volunteer-application:field-base-related-contact" ] } },
-        { "entity_has_field" : { "entity" : [ "volunteer-application" ], "field" : "field_base_email" } }
-      ],
-      "DO" : [
-        { "component_rules_volunteer_app_connect_existing_contact" : [] },
-        { "component_rules_volunteer_app_create_new_contact" : [] }
-      ]
-    }
-  }');
   $items['rules_volunteer_form_app_after_save'] = entity_import('rules_config', '{ "rules_volunteer_form_app_after_save" : {
       "LABEL" : "Volunteer Form App After Save",
       "PLUGIN" : "reaction rule",
