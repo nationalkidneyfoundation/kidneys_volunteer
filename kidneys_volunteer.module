@@ -67,7 +67,7 @@ function kidneys_volunteer_salesforce_push_params_alter(&$params, $mapping, $ent
     if (array_key_exists('Volunteer_Role__c', $params)) {
       $mapping_object = salesforce_mapping_object_load_by_drupal('node', $entity_wrapper->field_vol_related_opp->value()->nid);
       if (isset($mapping_object)) {
-        $params['Volunteer_Job__c'] = $mapping_object->salesforce_id;
+        $params['Volunteer_Role__c'] = $mapping_object->salesforce_id;
       }
     }
 
@@ -162,4 +162,15 @@ function kidneys_volunteer_app_form_validate($form, &$form_state) {
       form_set_error($name = 'field_base_email', $message = 'Please enter a valid email address.');
     }
   }
+}
+/*
+ * Implements hook_entityform_insert
+ */
+function kidneys_volunteer_entityform_insert($entityform) {
+  if ($entityform->type == 'volunteer_application') {
+    //$submission = entity_load_single('entityform', $entityform->entityform_id);
+    //$submission_wrapper = entity_metadata_wrapper('entityform', $submission);
+    //drupal_goto('iga-trial/results/' . $entityform->entityform_id);
+  }
+
 }
