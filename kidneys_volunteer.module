@@ -10,8 +10,8 @@ include_once 'kidneys_volunteer.features.inc';
  * Implements hook_salesforce_query_alter().
  */
 function kidneys_volunteer_salesforce_query_alter(SalesforceSelectQuery &$query) {
-  // Add office to query.
-  if ($query->objectType == 'Volunteer_Job__c') {
+  // Add office and campaign name to query.
+  if ($query->objectType == 'Volunteer_Role__c') {
     $query->fields[] = 'campaign__r.NKF_Office__c';
     $query->fields[] = 'campaign__r.Public_Campaign_Name__c';
   }
@@ -20,7 +20,11 @@ function kidneys_volunteer_salesforce_query_alter(SalesforceSelectQuery &$query)
  * Implements hook_salesforce_pull_entity_value_alter().
  */
 function kidneys_volunteer_salesforce_pull_entity_value_alter(&$value, $field_map, $sf_object) {
-  if (!empty($sf_object['Campaign__r']) && !empty($sf_object['Campaign__r']['NKF_Office__c']) && $field_map['drupal_field']['fieldmap_value'] == 'field_base_related_office') {
+
+  // Find the related office for the volunteer position based on the parent campaign.
+  if (!empty($sf_object['Campaign__r'])
+      && !empty($sf_object['Campaign__r']['NKF_Office__c'])
+      && $field_map['drupal_field']['fieldmap_value'] == 'field_base_related_office') {
     $sf_office_id = $sf_object['Campaign__r']['NKF_Office__c'];
     $mapping_object = salesforce_mapping_object_load_by_sfid($sf_office_id);
     if ($mapping_object) {
@@ -30,9 +34,14 @@ function kidneys_volunteer_salesforce_pull_entity_value_alter(&$value, $field_ma
       watchdog('kidneys_volunteer' , 'missing nkf office for ' . $value);
     }
   }
-  if (!empty($sf_object['Campaign__r']) && !empty($sf_object['Campaign__r']['Public_Campaign_Name__c']) && $field_map['drupal_field']['fieldmap_value'] == 'field_vol_campaign_name') {
+  if (!empty($sf_object['Campaign__r'])
+      && !empty($sf_object['Campaign__r']['Public_Campaign_Name__c'])
+      && $field_map['drupal_field']['fieldmap_value'] == 'field_vol_campaign_name') {
     $value = $sf_object['Campaign__r']['Public_Campaign_Name__c'];
   }
+  watchdog('kidneys_volunteer' , 'field: ' . $field_map['drupal_field']['fieldmap_value']);
+  watchdog('kidneys_volunteer' , 'sf object: <pre>' . print_r($sf_object,1). '</pre>');
+  watchdog('kidneys_volunteer' , 'value:' . $value);
 }
 
 function kidneys_volunteer_salesforce_push_params_alter(&$params, $mapping, $entity_wrapper) {
