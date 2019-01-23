@@ -1,4 +1,5 @@
 <?php
+
 /**
  * @file
  * kidneys_volunteer.features.field_base.inc
@@ -379,6 +380,49 @@ function kidneys_volunteer_field_default_field_bases() {
     'type' => 'list_boolean',
   );
 
+  // Exported field_base: 'field_vol_multilingual'.
+  $field_bases['field_vol_multilingual'] = array(
+    'active' => 1,
+    'cardinality' => 1,
+    'deleted' => 0,
+    'entity_types' => array(),
+    'field_name' => 'field_vol_multilingual',
+    'field_permissions' => array(
+      'type' => 0,
+    ),
+    'indexes' => array(
+      'value' => array(
+        0 => 'value',
+      ),
+    ),
+    'locked' => 0,
+    'module' => 'list',
+    'settings' => array(
+      'allowed_values' => array(
+        0 => '',
+        1 => '',
+      ),
+      'allowed_values_function' => '',
+    ),
+    'translatable' => 0,
+    'type' => 'list_boolean',
+  );
+
+  // Exported field_base: 'field_vol_number_needed'.
+  $field_bases['field_vol_number_needed'] = array(
+    'active' => 1,
+    'cardinality' => 1,
+    'deleted' => 0,
+    'entity_types' => array(),
+    'field_name' => 'field_vol_number_needed',
+    'indexes' => array(),
+    'locked' => 0,
+    'module' => 'number',
+    'settings' => array(),
+    'translatable' => 0,
+    'type' => 'number_integer',
+  );
+
   // Exported field_base: 'field_vol_opp_active'.
   $field_bases['field_vol_opp_active'] = array(
     'active' => 1,
@@ -405,6 +449,34 @@ function kidneys_volunteer_field_default_field_bases() {
     ),
     'translatable' => 0,
     'type' => 'list_boolean',
+  );
+
+  // Exported field_base: 'field_vol_published'.
+  $field_bases['field_vol_published'] = array(
+    'active' => 1,
+    'cardinality' => 1,
+    'deleted' => 0,
+    'entity_types' => array(),
+    'field_name' => 'field_vol_published',
+    'field_permissions' => array(
+      'type' => 0,
+    ),
+    'indexes' => array(
+      'value' => array(
+        0 => 'value',
+      ),
+    ),
+    'locked' => 0,
+    'module' => 'list',
+    'settings' => array(
+      'allowed_values' => array(
+        'publish' => 'Publish',
+        'unpublish' => 'Unpublish',
+      ),
+      'allowed_values_function' => '',
+    ),
+    'translatable' => 0,
+    'type' => 'list_text',
   );
 
   // Exported field_base: 'field_vol_related_opp'.
@@ -469,6 +541,36 @@ function kidneys_volunteer_field_default_field_bases() {
     'type' => 'text',
   );
 
+  // Exported field_base: 'field_vol_status'.
+  $field_bases['field_vol_status'] = array(
+    'active' => 1,
+    'cardinality' => 1,
+    'deleted' => 0,
+    'entity_types' => array(),
+    'field_name' => 'field_vol_status',
+    'field_permissions' => array(
+      'type' => 0,
+    ),
+    'indexes' => array(
+      'value' => array(
+        0 => 'value',
+      ),
+    ),
+    'locked' => 0,
+    'module' => 'list',
+    'settings' => array(
+      'allowed_values' => array(
+        'new' => 'New',
+        'pending' => 'Pending Approval',
+        'approved' => 'Approved',
+        'canceled' => 'Canceled',
+      ),
+      'allowed_values_function' => '',
+    ),
+    'translatable' => 0,
+    'type' => 'list_text',
+  );
+
   // Exported field_base: 'field_vol_type'.
   $field_bases['field_vol_type'] = array(
     'active' => 1,
@@ -488,11 +590,13 @@ function kidneys_volunteer_field_default_field_bases() {
     'module' => 'list',
     'settings' => array(
       'allowed_values' => array(
-        1 => 'Administrative',
-        2 => 'General',
-        3 => 'Professional',
-        4 => 'Special Event',
-        5 => 'Walk',
+        'social' => 'Special Event',
+        'walk' => 'Kidney Walk',
+        'golf' => 'Golf Classic',
+        'Media' => 'Media',
+        'admin' => 'Administrative/Office Support',
+        'medical' => 'Medical Writer/Program Reviewer',
+        'patient' => 'Patient and Community Support',
       ),
       'allowed_values_function' => '',
     ),

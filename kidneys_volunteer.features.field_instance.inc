@@ -1,4 +1,5 @@
 <?php
+
 /**
  * @file
  * kidneys_volunteer.features.field_instance.inc
@@ -59,7 +60,7 @@ function kidneys_volunteer_field_default_field_instances() {
         ),
       ),
       'type' => 'addressfield_standard',
-      'weight' => 6,
+      'weight' => 4,
     ),
   );
 
@@ -94,7 +95,7 @@ function kidneys_volunteer_field_default_field_instances() {
         'size' => 60,
       ),
       'type' => 'text_textfield',
-      'weight' => 4,
+      'weight' => 2,
     ),
   );
 
@@ -129,7 +130,7 @@ function kidneys_volunteer_field_default_field_instances() {
         'size' => 60,
       ),
       'type' => 'text_textfield',
-      'weight' => 2,
+      'weight' => 0,
     ),
   );
 
@@ -164,7 +165,7 @@ function kidneys_volunteer_field_default_field_instances() {
         'size' => 60,
       ),
       'type' => 'text_textfield',
-      'weight' => 3,
+      'weight' => 1,
     ),
   );
 
@@ -199,7 +200,7 @@ function kidneys_volunteer_field_default_field_instances() {
         'size' => 60,
       ),
       'type' => 'text_textfield',
-      'weight' => 5,
+      'weight' => 3,
     ),
   );
 
@@ -215,6 +216,7 @@ function kidneys_volunteer_field_default_field_instances() {
         'label' => 'above',
         'module' => 'entityreference',
         'settings' => array(
+          'bypass_access' => FALSE,
           'link' => FALSE,
         ),
         'type' => 'entityreference_label',
@@ -237,7 +239,7 @@ function kidneys_volunteer_field_default_field_instances() {
         'size' => 60,
       ),
       'type' => 'entityreference_autocomplete',
-      'weight' => 4,
+      'weight' => 9,
     ),
   );
 
@@ -269,7 +271,7 @@ function kidneys_volunteer_field_default_field_instances() {
       'module' => 'options',
       'settings' => array(),
       'type' => 'options_buttons',
-      'weight' => 12,
+      'weight' => 6,
     ),
   );
 
@@ -304,7 +306,7 @@ function kidneys_volunteer_field_default_field_instances() {
         'rows' => 2,
       ),
       'type' => 'text_textarea',
-      'weight' => 13,
+      'weight' => 7,
     ),
   );
 
@@ -548,6 +550,7 @@ function kidneys_volunteer_field_default_field_instances() {
         'label' => 'above',
         'module' => 'entityreference',
         'settings' => array(
+          'bypass_access' => FALSE,
           'link' => FALSE,
         ),
         'type' => 'entityreference_label',
@@ -570,7 +573,7 @@ function kidneys_volunteer_field_default_field_instances() {
         'size' => 60,
       ),
       'type' => 'entityreference_autocomplete',
-      'weight' => 6,
+      'weight' => 8,
     ),
   );
 
@@ -605,7 +608,7 @@ function kidneys_volunteer_field_default_field_instances() {
         'size' => 60,
       ),
       'type' => 'text_textfield',
-      'weight' => 5,
+      'weight' => 10,
     ),
   );
 
@@ -665,6 +668,7 @@ function kidneys_volunteer_field_default_field_instances() {
         'label' => 'above',
         'module' => 'entityreference',
         'settings' => array(
+          'bypass_access' => FALSE,
           'link' => FALSE,
         ),
         'type' => 'entityreference_label',
@@ -735,6 +739,96 @@ function kidneys_volunteer_field_default_field_instances() {
     ),
   );
 
+  // Exported field_instance:
+  // 'node-volunteer_opportunity-field_vol_multilingual'.
+  $field_instances['node-volunteer_opportunity-field_vol_multilingual'] = array(
+    'bundle' => 'volunteer_opportunity',
+    'default_value' => array(
+      0 => array(
+        'value' => 0,
+      ),
+    ),
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'list',
+        'settings' => array(),
+        'type' => 'list_default',
+        'weight' => 9,
+      ),
+      'teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+    ),
+    'entity_type' => 'node',
+    'field_name' => 'field_vol_multilingual',
+    'label' => 'Multilingual',
+    'required' => 0,
+    'settings' => array(
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'options',
+      'settings' => array(
+        'display_label' => 1,
+      ),
+      'type' => 'options_onoff',
+      'weight' => 50,
+    ),
+  );
+
+  // Exported field_instance:
+  // 'node-volunteer_opportunity-field_vol_number_needed'.
+  $field_instances['node-volunteer_opportunity-field_vol_number_needed'] = array(
+    'bundle' => 'volunteer_opportunity',
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'number',
+        'settings' => array(
+          'decimal_separator' => '.',
+          'prefix_suffix' => TRUE,
+          'scale' => 0,
+          'thousand_separator' => '',
+        ),
+        'type' => 'number_integer',
+        'weight' => 8,
+      ),
+      'teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+    ),
+    'entity_type' => 'node',
+    'field_name' => 'field_vol_number_needed',
+    'label' => 'Number Needed',
+    'required' => FALSE,
+    'settings' => array(
+      'max' => '',
+      'min' => '',
+      'prefix' => '',
+      'suffix' => '',
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'module' => 'number',
+      'settings' => array(),
+      'type' => 'number',
+      'weight' => 49,
+    ),
+  );
+
   // Exported field_instance: 'node-volunteer_opportunity-field_vol_opp_active'.
   $field_instances['node-volunteer_opportunity-field_vol_opp_active'] = array(
     'bundle' => 'volunteer_opportunity',
@@ -778,6 +872,47 @@ function kidneys_volunteer_field_default_field_instances() {
     ),
   );
 
+  // Exported field_instance: 'node-volunteer_opportunity-field_vol_published'.
+  $field_instances['node-volunteer_opportunity-field_vol_published'] = array(
+    'bundle' => 'volunteer_opportunity',
+    'default_value' => array(
+      0 => array(
+        'value' => 'publish',
+      ),
+    ),
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'list',
+        'settings' => array(),
+        'type' => 'list_default',
+        'weight' => 6,
+      ),
+      'teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+    ),
+    'entity_type' => 'node',
+    'field_name' => 'field_vol_published',
+    'label' => 'Published',
+    'required' => 1,
+    'settings' => array(
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'options',
+      'settings' => array(),
+      'type' => 'options_select',
+      'weight' => 47,
+    ),
+  );
+
   // Exported field_instance:
   // 'node-volunteer_opportunity-field_vol_related_sf_campaign'.
   $field_instances['node-volunteer_opportunity-field_vol_related_sf_campaign'] = array(
@@ -818,6 +953,43 @@ function kidneys_volunteer_field_default_field_instances() {
     ),
   );
 
+  // Exported field_instance: 'node-volunteer_opportunity-field_vol_status'.
+  $field_instances['node-volunteer_opportunity-field_vol_status'] = array(
+    'bundle' => 'volunteer_opportunity',
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'list',
+        'settings' => array(),
+        'type' => 'list_default',
+        'weight' => 7,
+      ),
+      'teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+    ),
+    'entity_type' => 'node',
+    'field_name' => 'field_vol_status',
+    'label' => 'Status',
+    'required' => 0,
+    'settings' => array(
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'options',
+      'settings' => array(),
+      'type' => 'options_select',
+      'weight' => 48,
+    ),
+  );
+
   // Exported field_instance: 'node-volunteer_opportunity-field_vol_type'.
   $field_instances['node-volunteer_opportunity-field_vol_type'] = array(
     'bundle' => 'volunteer_opportunity',
@@ -849,9 +1021,7 @@ function kidneys_volunteer_field_default_field_instances() {
     'widget' => array(
       'active' => 1,
       'module' => 'options',
-      'settings' => array(
-        'apply_chosen' => '',
-      ),
+      'settings' => array(),
       'type' => 'options_select',
       'weight' => 46,
     ),
@@ -873,13 +1043,17 @@ function kidneys_volunteer_field_default_field_instances() {
   t('Is Active');
   t('Kidney Walks');
   t('Last Name');
+  t('Multilingual');
+  t('Number Needed');
   t('Phone');
   t('Professional Program Reviews');
+  t('Published');
   t('Related Contact');
   t('Related Office');
   t('Related SF Campaign');
   t('Related Volunteer Opportunity');
   t('Special Events');
+  t('Status');
   t('Type');
 
   return $field_instances;

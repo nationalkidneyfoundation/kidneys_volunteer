@@ -1,4 +1,5 @@
 <?php
+
 /**
  * @file
  * kidneys_volunteer.rules_defaults.inc
@@ -123,8 +124,7 @@ function kidneys_volunteer_default_rules_configuration() {
             "data" : [ "volunteer-app:field-base-related-contact" ],
             "value" : [ "fetched-contact" ]
           }
-        },
-        { "component_rules_volunteer_app_save_vol_preferences" : { "form" : [ "volunteer-app" ], "contact" : [ "fetched-contact" ] } }
+        }
       ]
     }
   }');
@@ -165,13 +165,34 @@ function kidneys_volunteer_default_rules_configuration() {
             "value" : [ "volunteer-app:field-base-email" ]
           }
         },
-        { "component_rules_volunteer_app_save_vol_preferences" : { "form" : [ "volunteer-app" ], "contact" : [ "created-created" ] } },
         { "entity_save" : { "data" : [ "created-created" ], "immediate" : "1" } },
         { "data_set" : {
             "data" : [ "volunteer-app:field-base-related-contact" ],
             "value" : [ "created-created" ]
           }
         }
+      ]
+    }
+  }');
+  $items['rules_volunteer_form_application_save'] = entity_import('rules_config', '{ "rules_volunteer_form_application_save" : {
+      "LABEL" : "Volunteer Form Application Save",
+      "PLUGIN" : "reaction rule",
+      "OWNER" : "rules",
+      "TAGS" : [ "volunteer" ],
+      "REQUIRES" : [ "rules", "entityform" ],
+      "ON" : { "entityform_presave" : [] },
+      "IF" : [
+        { "entity_is_of_bundle" : {
+            "entity" : [ "entityform" ],
+            "type" : "entityform",
+            "bundle" : { "value" : { "volunteer_application" : "volunteer_application" } }
+          }
+        },
+        { "entity_has_field" : { "entity" : [ "entityform" ], "field" : "field_base_related_contact" } }
+      ],
+      "DO" : [
+        { "component_rules_volunteer_form_app_connect_existing_contact_" : { "volunteer_app" : [ "entityform" ] } },
+        { "component_rules_volunteer_form_app_create_new_contact" : { "volunteer_app" : [ "entityform" ] } }
       ]
     }
   }');

@@ -1,4 +1,5 @@
 <?php
+
 /**
  * @file
  * kidneys_volunteer.views_default.inc
@@ -194,57 +195,6 @@ function kidneys_volunteer_views_default_views() {
     1 => '1',
   );
   $handler->display->display_options['filters']['field_vol_opp_active_value']['group'] = 1;
-  /* Filter criterion: Content: Type (field_vol_type) */
-  $handler->display->display_options['filters']['field_vol_type_value']['id'] = 'field_vol_type_value';
-  $handler->display->display_options['filters']['field_vol_type_value']['table'] = 'field_data_field_vol_type';
-  $handler->display->display_options['filters']['field_vol_type_value']['field'] = 'field_vol_type_value';
-  $handler->display->display_options['filters']['field_vol_type_value']['exposed'] = TRUE;
-  $handler->display->display_options['filters']['field_vol_type_value']['expose']['operator_id'] = 'field_vol_type_value_op';
-  $handler->display->display_options['filters']['field_vol_type_value']['expose']['label'] = 'Type';
-  $handler->display->display_options['filters']['field_vol_type_value']['expose']['operator'] = 'field_vol_type_value_op';
-  $handler->display->display_options['filters']['field_vol_type_value']['expose']['identifier'] = 'field_vol_type_value';
-  $handler->display->display_options['filters']['field_vol_type_value']['expose']['multiple'] = TRUE;
-  $handler->display->display_options['filters']['field_vol_type_value']['expose']['remember_roles'] = array(
-    2 => '2',
-    1 => 0,
-    4 => 0,
-    3 => 0,
-    5 => 0,
-    6 => 0,
-    9 => 0,
-    40 => 0,
-    7 => 0,
-    8 => 0,
-    11 => 0,
-    14 => 0,
-    13 => 0,
-    15 => 0,
-    10 => 0,
-    16 => 0,
-    17 => 0,
-    20 => 0,
-    12 => 0,
-    38 => 0,
-    19 => 0,
-    37 => 0,
-    18 => 0,
-    21 => 0,
-    22 => 0,
-    39 => 0,
-    28 => 0,
-    23 => 0,
-    24 => 0,
-    25 => 0,
-    26 => 0,
-    27 => 0,
-    30 => 0,
-    29 => 0,
-    31 => 0,
-    32 => 0,
-    33 => 0,
-    34 => 0,
-    35 => 0,
-  );
 
   /* Display: Content pane */
   $handler = $view->new_display('panel_pane', 'Content pane', 'panel_pane_1');
@@ -464,7 +414,6 @@ function kidneys_volunteer_views_default_views() {
 
 '),
     t('All'),
-    t('Type'),
     t('Content pane'),
     t('View panes'),
     t('Opportunity Detail'),
