@@ -52,6 +52,9 @@ function kidneys_volunteer_salesforce_pull_entity_value_alter(&$value, $field_ma
   //watchdog('kidneys_volunteer' , 'value:' . $value);
 }
 
+/**
+ * Implements hook_salesforce_push_params_alter().
+ */
 function kidneys_volunteer_salesforce_push_params_alter(&$params, $mapping, $entity_wrapper) {
   if ($entity_wrapper->type()== 'entityform') {
     //watchdog('vm_push_wr', '<pre>' . print_r($entity_wrapper ,1) . '</pre>');
@@ -59,12 +62,16 @@ function kidneys_volunteer_salesforce_push_params_alter(&$params, $mapping, $ent
     //watchdog('vm_push_wr_op', '<pre>' . print_r($entity_wrapper->field_vol_related_opp->value() ,1) . '</pre>');
     //watchdog('vm_push_wr_con', '<pre>' . print_r($entity_wrapper->field_base_related_contact->value() ,1) . '</pre>');
     //watchdog('vm_push_wr_con', '<pre>' . print_r($entity_wrapper->field_base_related_contact->value()->contact_id ,1) . '</pre>');
-    if (array_key_exists('Volunteer_Job__c', $params)) {
+
+    // Grab the SF ID for the Volunteer Job on the application.
+    if (array_key_exists('Volunteer_Role__c', $params)) {
       $mapping_object = salesforce_mapping_object_load_by_drupal('node', $entity_wrapper->field_vol_related_opp->value()->nid);
       if (isset($mapping_object)) {
         $params['Volunteer_Job__c'] = $mapping_object->salesforce_id;
       }
     }
+
+    // Grab the SF ID for the Contact on the application.
     if (array_key_exists('Contact__c', $params)) {
       $mapping_object = salesforce_mapping_object_load_by_drupal('redhen_contact', $entity_wrapper->field_base_related_contact->value()->contact_id);
       if (isset($mapping_object)) {
@@ -72,7 +79,7 @@ function kidneys_volunteer_salesforce_push_params_alter(&$params, $mapping, $ent
       }
     }
   }
-  watchdog('vm_push_params', '<pre>'.print_r($params, 1). '</pre>');
+  watchdog('kidneys_volunteer', 'push params: <pre>'.print_r($params, 1). '</pre>');
 }
 
 /**
@@ -81,17 +88,13 @@ function kidneys_volunteer_salesforce_push_params_alter(&$params, $mapping, $ent
 function kidneys_volunteer_form_alter(&$form, &$form_state, $form_id) {
   //print 'FORMID: ' . $form_id .'<br>';
   if ($form_id == 'volunteer_application_entityform_edit_form') {
-    $form['field_base_related_contact']['#access'] = FALSE;
-    $form['field_vol_related_opp']['#access'] = FALSE;
-    $form['field_vol_related_sf_campaign']['#access'] = FALSE;
+    // TODO: uncomment these after testing.
+    //$form['field_base_related_contact']['#access'] = FALSE;
+    //$form['field_vol_related_opp']['#access'] = FALSE;
+    //$form['field_vol_related_sf_campaign']['#access'] = FALSE;
     if ((arg(2) && $vo_id = arg(2)) || (!empty($_GET['volunteer-opportunity']) && $vo_id = $_GET['volunteer-opportunity'])) {
       $vo = node_load($vo_id);
-      //print '<pre>';
-      //print_r($vo);
-      //print '</pre>';
-
       if ($vo) {
-        //$form['field_vol_related_opp'][LANGUAGE_UNDEFINED][0]['target_id']['#default_value'] = $vo->nid;
         $form['field_vol_related_opp'][LANGUAGE_NONE][0]['target_id']['#default_value'] = 'Opp (' .$vo->nid . ')';
         //$body = field_view_field('node', $vo, 'body', array(
         //    'label'=> 'hidden'
