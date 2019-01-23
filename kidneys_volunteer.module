@@ -13,7 +13,7 @@ function kidneys_volunteer_salesforce_query_alter(SalesforceSelectQuery &$query)
   // Add office and campaign name to query.
   if ($query->objectType == 'Volunteer_Role__c') {
     $query->fields[] = 'campaign__r.NKF_Office__c';
-    $query->fields[] = 'campaign__r.Public_Campaign_Name__c';
+    $query->fields[] = 'campaign__r.Name';
   }
 }
 /**
@@ -34,14 +34,15 @@ function kidneys_volunteer_salesforce_pull_entity_value_alter(&$value, $field_ma
       watchdog('kidneys_volunteer' , 'missing nkf office for ' . $value);
     }
   }
+  // Grab the campaign's  name.
   if (!empty($sf_object['Campaign__r'])
-      && !empty($sf_object['Campaign__r']['Public_Campaign_Name__c'])
+      && !empty($sf_object['Campaign__r']['Name'])
       && $field_map['drupal_field']['fieldmap_value'] == 'field_vol_campaign_name') {
-    $value = $sf_object['Campaign__r']['Public_Campaign_Name__c'];
+    $value = $sf_object['Campaign__r']['Name'];
   }
-  watchdog('kidneys_volunteer' , 'field: ' . $field_map['drupal_field']['fieldmap_value']);
-  watchdog('kidneys_volunteer' , 'sf object: <pre>' . print_r($sf_object,1). '</pre>');
-  watchdog('kidneys_volunteer' , 'value:' . $value);
+  //watchdog('kidneys_volunteer' , 'field: ' . $field_map['drupal_field']['fieldmap_value']);
+  //watchdog('kidneys_volunteer' , 'sf object: <pre>' . print_r($sf_object,1). '</pre>');
+  //watchdog('kidneys_volunteer' , 'value:' . $value);
 }
 
 function kidneys_volunteer_salesforce_push_params_alter(&$params, $mapping, $entity_wrapper) {
