@@ -114,6 +114,8 @@ function kidneys_volunteer_form_alter(&$form, &$form_state, $form_id) {
         if ($vo->field_vol_related_sf_campaign) {
             $form['field_vol_related_sf_campaign'][LANGUAGE_NONE][0]['value']['#default_value'] = $vo->field_vol_related_sf_campaign[LANGUAGE_NONE][0]['value'];
         }
+        dpm($vo, 'vo');
+        dpm($form, 'form');
 
       }
     }
