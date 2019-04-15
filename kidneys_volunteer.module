@@ -90,6 +90,22 @@ function kidneys_volunteer_form_alter(&$form, &$form_state, $form_id) {
     if ((arg(2) && $vo_id = arg(2)) || (!empty($_GET['volunteer-opportunity']) && $vo_id = $_GET['volunteer-opportunity'])) {
       $vo = node_load($vo_id);
       if ($vo) {
+        // Set the default interests based on opportunity selected
+        $vo_type = mb_strtolower($vo->field_vol_type[LANGUAGE_NONE][0]['value']);
+        switch ($vo_type) {
+          case 'media':
+            $form['field_vol_media'][LANGUAGE_NONE][0]['value']['#default_value'] = 1;
+            break;
+          case 'admin':
+            $form['field_vol_admin_office_support'][LANGUAGE_NONE][0]['value']['#default_value'] = 1;
+            break;
+          case 'medical':
+            $form['field_vol_med_prog_reviewer'][LANGUAGE_NONE][0]['value']['#default_value'] = 1;
+            break;
+          case 'fundraiser':
+            $form['field_vol_fundraising_event'][LANGUAGE_NONE][0]['value']['#default_value'] = 1;
+            break;
+        }
         $form['field_vol_related_opp'][LANGUAGE_NONE][0]['target_id']['#default_value'] = 'Opp (' .$vo->nid . ')';
         if ($vo->field_vol_related_sf_campaign) {
             $form['field_vol_related_sf_campaign'][LANGUAGE_NONE][0]['value']['#default_value'] = $vo->field_vol_related_sf_campaign[LANGUAGE_NONE][0]['value'];
@@ -104,6 +120,8 @@ function kidneys_volunteer_form_alter(&$form, &$form_state, $form_id) {
     $form['field_base_last_name']['#attributes']['class'][] = 'grid-cell sm--width--50 width--100 padding-x--xxs';
     $form['field_base_email']['#attributes']['class'][] = 'grid-cell sm--width--50 width--100 padding-x--xxs';
     $form['field_base_phone']['#attributes']['class'][] = 'grid-cell sm--width--50 width--100 padding-x--xxs';
+
+    /*
     $form['field_vol_interest_admin']['#attributes']['class'][] = 'grid-cell width--100 padding-x--xxs';
     $form['field_vol_interest_advocacy']['#attributes']['class'][] = 'grid-cell width--100 padding-x--xxs';
     $form['field_vol_interest_prof_review']['#attributes']['class'][] = 'grid-cell width--100 padding-x--xxs';
@@ -112,7 +130,7 @@ function kidneys_volunteer_form_alter(&$form, &$form_state, $form_id) {
     $form['field_vol_interest_events']['#attributes']['class'][] = 'grid-cell width--100 padding-x--xxs';
     $form['field_vol_available_daystimes']['#attributes']['class'][] = 'grid-cell width--100 padding-x--xxs';
     $form['field_vol_available_notes']['#attributes']['class'][] = 'grid-cell width--100 padding-x--xxs';
-
+    */
     $form['field_base_address'][LANGUAGE_NONE][0]['#type'] = 'container';
     $form['field_base_address'][LANGUAGE_NONE][0]['street_block']['#attributes']['class'][] = 'grid width--100';
     $form['field_base_address'][LANGUAGE_NONE][0]['locality_block']['#attributes']['class'][] = 'grid width--100';
@@ -131,6 +149,8 @@ function kidneys_volunteer_form_alter(&$form, &$form_state, $form_id) {
 
     $form['actions']['#attributes']['class'][] = 'padding-x--xl margin-top--lg margin-bottom--md text-align--center';
     $form['actions']['submit']['#attributes']['class'][] = 'grid-cell button--green caps bold';
+
+
 
     array_unshift($form['#validate'], 'kidneys_volunteer_app_form_validate');
   }
