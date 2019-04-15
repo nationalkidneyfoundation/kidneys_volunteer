@@ -98,16 +98,16 @@ function kidneys_volunteer_form_alter(&$form, &$form_state, $form_id) {
         $vo_type = mb_strtolower($vo->field_vol_type[LANGUAGE_NONE][0]['value']);
         switch ($vo_type) {
           case 'media':
-            $form['field_vol_media'][LANGUAGE_NONE][0]['value']['#default_value'] = 1;
+            $form['field_vol_media'][LANGUAGE_NONE]['#default_value'] = 1;
             break;
           case 'admin':
-            $form['field_vol_admin_office_support'][LANGUAGE_NONE][0]['value']['#default_value'] = 1;
+            $form['field_vol_admin_office_support'][LANGUAGE_NONE]['#default_value'] = 1;
             break;
           case 'medical':
-            $form['field_vol_med_prog_reviewer'][LANGUAGE_NONE][0]['value']['#default_value'] = 1;
+            $form['field_vol_med_prog_reviewer'][LANGUAGE_NONE]['#default_value'] = 1;
             break;
           case 'fundraiser':
-            $form['field_vol_fundraising_event'][LANGUAGE_NONE][0]['value']['#default_value'] = 1;
+            $form['field_vol_fundraising_event'][LANGUAGE_NONE]['#default_value'] = 1;
             break;
         }
         $form['field_vol_related_opp'][LANGUAGE_NONE][0]['target_id']['#default_value'] = 'Opp (' .$vo->nid . ')';
