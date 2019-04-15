@@ -84,10 +84,14 @@ function kidneys_volunteer_salesforce_push_params_alter(&$params, $mapping, $ent
  */
 function kidneys_volunteer_form_alter(&$form, &$form_state, $form_id) {
   if ($form_id == 'volunteer_application_entityform_edit_form') {
-    $form['field_base_related_contact']['#access'] = FALSE;
-    $form['field_vol_related_opp']['#access'] = FALSE;
-    $form['field_vol_related_sf_campaign']['#access'] = FALSE;
+    //$form['field_base_related_contact']['#access'] = FALSE;
+    //$form['field_vol_related_opp']['#access'] = FALSE;
+    //$form['field_vol_related_sf_campaign']['#access'] = FALSE;
     if ((arg(2) && $vo_id = arg(2)) || (!empty($_GET['volunteer-opportunity']) && $vo_id = $_GET['volunteer-opportunity'])) {
+      $mapping_object = salesforce_mapping_object_load_by_sfid($vo_id);
+      if ($mapping_object) {
+        $vo_id = $mapping_object->entity_id;
+      }
       $vo = node_load($vo_id);
       if ($vo) {
         // Set the default interests based on opportunity selected
