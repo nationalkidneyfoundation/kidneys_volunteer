@@ -42,9 +42,14 @@ function kidneys_volunteer_app_title($sf_id) {
 
 function kidneys_volunteer_app_page($sf_id) {
   $wrapper = kidneys_volunteer_load_entity_from_sf($sf_id);
-  $form = drupal_get_form('volunteer_application_entityform_edit_form');
-  $rendered_form = drupal_render($form);
-  return $rendered_form;
+
+  $entity_form = entityform_block_get_entity('volunteer_application');
+  if ($entity_form && entityform_access('submit', $entity_form)) {
+    module_load_include('inc', 'entityform', 'entityform.admin');
+    $form = entityform_form_wrapper(entityform_empty_load($delta), 'submit', 'embedded');
+    $form = drupal_render($form);
+  }
+  return $form;
 }
 /**
  * Implements hook_salesforce_query_alter().
