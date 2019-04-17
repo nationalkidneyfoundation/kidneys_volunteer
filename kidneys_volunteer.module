@@ -7,6 +7,46 @@
 include_once 'kidneys_volunteer.features.inc';
 
 /**
+ * Implements hook_menu().
+ */
+function kidneys_volunteer_menu() {
+  // A redirect page for facebook shares that require it.
+  $items['volunteer/app/%'] = array(
+    'title callback' => 'kidneys_volunteer_app_title',
+    'title arguments' => array(2),
+    'page callback' => 'kidneys_volunteer_app_page',
+    'page arguments' => array(2),
+    'access arguments' => array('access content'),
+    'type' => MENU_CALLBACK,
+  );
+  return $items;
+}
+
+function kidneys_volunteer_load_entity_from_sf($sf_id) {
+  $mapping = salesforce_mapping_object_load_by_sfid($sf_id);
+  if ($mapping) {
+    $entity = entity_load_single($mapping->entity_type, $mapping->entity_id);
+    if ($entity) {
+      return entity_metadata_wrapper($mapping->entity_type, $entity);
+    }
+  }
+  return FALSE;
+}
+
+function kidneys_volunteer_app_title($sf_id) {
+  $wrapper = kidneys_volunteer_load_entity_from_sf($sf_id);
+  if ($wrapper) {
+    return t($wrapper->label());
+  }
+}
+
+function kidneys_volunteer_app_page($sf_id) {
+  $wrapper = kidneys_volunteer_load_entity_from_sf($sf_id);
+  $form = drupal_get_form('volunteer_application_entityform_edit_form');
+  $rendered_form = drupal_render($form);
+  return $rendered_form;
+}
+/**
  * Implements hook_salesforce_query_alter().
  */
 function kidneys_volunteer_salesforce_query_alter(SalesforceSelectQuery &$query) {
