@@ -39,14 +39,30 @@ function kidneys_volunteer_app_title($sf_id) {
     return t($wrapper->label());
   }
 }
+function kidneys_volunteer_entityform_get_entity($type){
+
+  $query = new EntityFieldQuery();
+  $query->entityCondition('entity_type', 'entityform_type')
+        ->propertyCondition('type', $type);
+  $result = $query->execute();
+
+  if (!empty($result)) {
+    $id = key($result['entityform_type']);
+    $entity_form = entity_load('entityform_type', array($id));
+    return $entity_form[$id];
+  }
+  else {
+    return FALSE;
+  }
+}
 
 function kidneys_volunteer_app_page($sf_id) {
   $wrapper = kidneys_volunteer_load_entity_from_sf($sf_id);
 
-  $entity_form = entityform_block_get_entity('volunteer_application');
+  $entity_form = kidneys_volunteer_entityform_get_entity('volunteer_application');
   if ($entity_form && entityform_access('submit', $entity_form)) {
     module_load_include('inc', 'entityform', 'entityform.admin');
-    $form = entityform_form_wrapper(entityform_empty_load($delta), 'submit', 'embedded');
+    $form = entityform_form_wrapper(entityform_empty_load('volunteer_application'), 'submit', 'embedded');
     $form = drupal_render($form);
   }
   return $form;
