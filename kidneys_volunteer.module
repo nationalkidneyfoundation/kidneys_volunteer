@@ -25,11 +25,16 @@ function kidneys_volunteer_menu() {
 /**
  * Implements hook_theme
  */
-function kidneys_volunteer_theme() {
+function kidneys_volunteer_theme($existing, $type, $theme, $path) {
   return array(
     'kidneys_volunteer_app' => array(
-      'variables' => array('form' => NULL),
-      'template' => 'kidneys_volunteer_app_template'
+      'template' => 'kidneys-volunteer-app',
+      'path' => drupal_get_path('module', 'kidneys_volunteer') . '/templates',
+      'type' => 'theme',
+      'variables' => array(
+        'title' => NULL,
+        'form' => NULL
+      ),
     ),
   );
 }
