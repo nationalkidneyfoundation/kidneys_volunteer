@@ -22,11 +22,24 @@ function kidneys_volunteer_menu() {
   return $items;
 }
 
+/**
+ * Implements hook_theme
+ */
+function kidneys_volunteer_theme() {
+  return array(
+    'kidneys_volunteer_app' => array(
+      'variables' => array('form' => NULL),
+      'template' => 'kidneys_volunteer_app_template'
+    ),
+  );
+}
+
 function kidneys_volunteer_load_entity_from_sf($sf_id) {
   $mapping = salesforce_mapping_object_load_by_sfid($sf_id);
   if ($mapping) {
     $entity = entity_load_single($mapping->entity_type, $mapping->entity_id);
     if ($entity) {
+      dpm($entity);
       return entity_metadata_wrapper($mapping->entity_type, $entity);
     }
   }
@@ -57,15 +70,16 @@ function kidneys_volunteer_entityform_get_entity($type){
 }
 
 function kidneys_volunteer_app_page($sf_id) {
+  $vars = array();
   $wrapper = kidneys_volunteer_load_entity_from_sf($sf_id);
-
   $entity_form = kidneys_volunteer_entityform_get_entity('volunteer_application');
   if ($entity_form && entityform_access('submit', $entity_form)) {
     module_load_include('inc', 'entityform', 'entityform.admin');
     $form = entityform_form_wrapper(entityform_empty_load('volunteer_application'), 'submit', 'embedded');
-    $form = drupal_render($form);
+    $vars['form'] = drupal_render($form);
   }
-  return $form;
+
+  return theme('kidneys_volunteer_app', $vars);
 }
 /**
  * Implements hook_salesforce_query_alter().
