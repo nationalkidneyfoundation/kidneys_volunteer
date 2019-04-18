@@ -83,13 +83,12 @@ function kidneys_volunteer_app_page($sf_id) {
     $form = entityform_form_wrapper(entityform_empty_load('volunteer_application'), 'submit', 'embedded');
     $vars['form'] = drupal_render($form);
   }
-  $vars['title'] => $volunteer_opp->label();
-  $office = $volunteer_opp->field_base_related_office;
+  $vars['title'] = $volunteer_opp->label();
   $office = $volunteer_opp->field_base_related_office->get(0);
   if(!empty($office)) {
     $vars['office'] = $office->label();
-    $vars['lat'] = $office-> field_base_geofield->lat->value();
-    $vars['lon'] = $office-> field_base_geofield->lon->value();
+    $vars['lat'] = $office->field_base_geofield->lat->value();
+    $vars['lon'] = $office->field_base_geofield->lon->value();
   }
   $vars['path'] = url(current_path(), array('absolute' => TRUE, 'query' => drupal_get_query_parameters()));
   return theme('kidneys_volunteer_app', $vars);
