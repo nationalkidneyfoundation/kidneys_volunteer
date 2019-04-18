@@ -84,13 +84,17 @@ function kidneys_volunteer_app_page($sf_id) {
     $vars['form'] = drupal_render($form);
   }
   $vars['title'] = $volunteer_opp->label();
+  $vars['description'] = $volunteer_opp->body->value->value();
   $office = $volunteer_opp->field_base_related_office->get(0);
   if(!empty($office)) {
-    $vars['office'] = $office->label();
+    $vars['office'] = $office->title->value();
     $vars['lat'] = $office->field_base_geofield->lat->value();
     $vars['lon'] = $office->field_base_geofield->lon->value();
   }
   $vars['path'] = url(current_path(), array('absolute' => TRUE, 'query' => drupal_get_query_parameters()));
+
+  // Need to add metatags.
+  // https://drupal.stackexchange.com/questions/37715/adding-open-graph-metatags-to-head
   return theme('kidneys_volunteer_app', $vars);
 }
 /**
@@ -205,7 +209,7 @@ function kidneys_volunteer_form_alter(&$form, &$form_state, $form_id) {
 
       }
     }
-    $form['#prefix'] = '<div class="grid max-width--xxl bg--white  display--inline-block">';
+    $form['#prefix'] = '<div class="grid max-width--xxl bg--white ">';
     $form['#suffix'] = '</div>';
     $form['field_base_address'][LANGUAGE_NONE][0]['country']['#access'] = FALSE;
     $form['field_base_first_name']['#attributes']['class'][] = 'grid-cell sm--width--50 width--100 padding-x--xxs';
