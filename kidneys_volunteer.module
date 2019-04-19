@@ -209,7 +209,7 @@ function kidneys_volunteer_form_alter(&$form, &$form_state, $form_id) {
 
       }
     }
-    $form['#prefix'] = '<div class="grid max-width--xxl bg--white ">';
+    $form['#prefix'] = '<div class="grid bg--white ">';
     $form['#suffix'] = '</div>';
     $form['field_base_address'][LANGUAGE_NONE][0]['country']['#access'] = FALSE;
     $form['field_base_first_name']['#attributes']['class'][] = 'grid-cell sm--width--50 width--100 padding-x--xxs';
@@ -243,7 +243,7 @@ function kidneys_volunteer_form_alter(&$form, &$form_state, $form_id) {
     $form['field_base_address'][LANGUAGE_NONE][0]['locality_block']['postal_code']['#suffix']= '</div>';
     $form['field_base_address'][LANGUAGE_NONE][0]['locality_block']['postal_code']['#attributes']['class'][] = 'width--100';
 
-    $form['actions']['#attributes']['class'][] = 'padding-x--xl margin-top--lg margin-bottom--md text-align--center';
+    $form['actions']['#attributes']['class'][] = 'text-align--center';
     $form['actions']['submit']['#attributes']['class'][] = 'grid-cell button--green caps bold';
 
 
