@@ -7,7 +7,7 @@
         </h2>
         <p>Thank you for your interest in becoming a volunteer. We just need some information from you to get started. After you complete the form we'll send you an email so you know we've received your information. Next, someone from our volunteer office will contact you.</p>
       </div>
-      <div class="bg--white rounded  border border-color--gray-5 border-width--sm padding--md">
+      <div class="bg--white rounded  border border-color--gray-5 border-width--sm padding-y--md padding-x--xxl">
         <?php print $form;?>
       </div>
     </div>
