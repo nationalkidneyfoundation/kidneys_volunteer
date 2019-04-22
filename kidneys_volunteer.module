@@ -12,7 +12,7 @@ include_once 'kidneys_volunteer.features.inc';
 function kidneys_volunteer_menu() {
   // A redirect page for facebook shares that require it.
   $items['volunteer/app/%'] = array(
-    'title' => t('Sign Up to Volunteer'),
+    //'title' => t('Sign Up to Volunteer'),
     //'title callback' => 'kidneys_volunteer_app_title',
     //'title arguments' => array(2),
     'page callback' => 'kidneys_volunteer_app_page',
