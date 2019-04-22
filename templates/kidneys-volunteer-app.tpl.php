@@ -1,11 +1,11 @@
 <div class="container">
   <div class="display--flex flex-wrap--wrap">
+    <div class="width--100 margin-y--xl text-align--center">
+      <img class="width--md" src="https://www.kidney.org/sites/default/files/volunteerhands_transparent.png">
+      <h1 class="md--font-size--xxxl padding-top--sm padding-bottom--lg">Sign Up to Volunteer</h1>
+    </div>
     <div class="md--width--50 width--100 padding-bottom--lg sm--padding-right--lg">
-      <img class="center display--block margin-bottom--md" src="https://www.kidney.org/sites/default/files/volunteerhands_transparent.png">
       <p>Thank you for your interest in becoming a volunteer. We just need some information from you to get started. After you complete the form we'll send you an email so you know we've received your information. Next, someone from our volunteer office will contact you.</p>
-
-      <h2>Volunteer Role</h2>
-
       <h3 class=""><?php print $title; ?></h3>
 
       <div><?php print $description; ?></div>
@@ -18,12 +18,12 @@
       <?php endif;?>
     </div>
     <div class="md--width--50 width--100 padding-bottom--lg sm--padding-left--lg">
-      <div class="max-width--xxl bg--white rounded border border-color--gray-5 border-width--sm padding-y--xxs padding-x--xxl">
+      <div class="max-width--xxl margin-bottom--lg bg--white rounded border border-color--gray-5 border-width--sm padding-y--xxs padding-x--xxl">
         <?php print $form;?>
       </div>
-      <p class="font-style--italic">By submitting this form, I agree to the terms of NKF’s Volunteer Service Agreement. NKF volunteers maintain accountability, are extended the right to meaningful duties and fair treatment. In exchange, NKF expects volunteers to perform their assigned duties to the best of their ability and remain loyal to the enterprise goals and procedures. NKF reserves the right to sever ties with any volunteer who fails to adhere to these procedures.</p>
+      <p class="max-width--xxl font-style--italic">By submitting this form, I agree to the terms of NKF’s Volunteer Service Agreement. NKF volunteers maintain accountability, are extended the right to meaningful duties and fair treatment. In exchange, NKF expects volunteers to perform their assigned duties to the best of their ability and remain loyal to the enterprise goals and procedures. NKF reserves the right to sever ties with any volunteer who fails to adhere to these procedures.</p>
     </div>
-    <div class="width--100 margin-y--xxl border-top border-bottom padding-y--lg">
+    <div class="width--100 margin-y--xxl border-top padding-y--lg">
       <div class=" max-width--xxl center">
         <div class="display--flex flex-wrap--wrap text-align--center">
           <div class="width--100 caps font-size--lg padding-y--xxs bold">share</div>
