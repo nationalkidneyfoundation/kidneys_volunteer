@@ -21,62 +21,111 @@ function kidneys_volunteer_default_rules_configuration() {
         "contact" : { "label" : "contact", "type" : "redhen_contact" }
       },
       "IF" : [
-        { "entity_has_field" : { "entity" : [ "form" ], "field" : "field_vol_interest_admin" } },
-        { "entity_has_field" : { "entity" : [ "contact" ], "field" : "field_vol_interest_admin" } },
-        { "entity_has_field" : { "entity" : [ "form" ], "field" : "field_vol_interest_advocacy" } },
-        { "entity_has_field" : { "entity" : [ "contact" ], "field" : "field_vol_interest_advocacy" } },
-        { "entity_has_field" : { "entity" : [ "form" ], "field" : "field_vol_interest_prof_review" } },
-        { "entity_has_field" : { "entity" : [ "contact" ], "field" : "field_vol_interest_prof_review" } },
-        { "entity_has_field" : { "entity" : [ "form" ], "field" : "field_vol_interest_screening" } },
-        { "entity_has_field" : { "entity" : [ "contact" ], "field" : "field_vol_interest_screening" } },
-        { "entity_has_field" : { "entity" : [ "form" ], "field" : "field_vol_interest_walks" } },
-        { "entity_has_field" : { "entity" : [ "contact" ], "field" : "field_vol_interest_walks" } },
-        { "entity_has_field" : { "entity" : [ "form" ], "field" : "field_vol_interest_events" } },
-        { "entity_has_field" : { "entity" : [ "contact" ], "field" : "field_vol_interest_events" } },
-        { "entity_has_field" : { "entity" : [ "form" ], "field" : "field_vol_available_daystimes" } },
-        { "entity_has_field" : { "entity" : [ "contact" ], "field" : "field_vol_available_daystimes" } },
+        { "entity_has_field" : { "entity" : [ "form" ], "field" : "field_vol_fundraising_event" } },
+        { "entity_has_field" : { "entity" : [ "contact" ], "field" : "field_vol_fundraising_event" } },
+        { "entity_has_field" : { "entity" : [ "form" ], "field" : "field_vol_media" } },
+        { "entity_has_field" : { "entity" : [ "contact" ], "field" : "field_vol_media" } },
+        { "entity_has_field" : { "entity" : [ "form" ], "field" : "field_vol_admin_office_support" } },
+        { "entity_has_field" : { "entity" : [ "contact" ], "field" : "field_vol_admin_office_support" } },
+        { "entity_has_field" : { "entity" : [ "form" ], "field" : "field_vol_available_other" } },
+        { "entity_has_field" : { "entity" : [ "contact" ], "field" : "field_vol_available_other" } },
+        { "entity_has_field" : { "entity" : [ "form" ], "field" : "field_vol_available_weekday_days" } },
+        { "entity_has_field" : { "entity" : [ "contact" ], "field" : "field_vol_available_weekday_days" } },
         { "entity_has_field" : { "entity" : [ "form" ], "field" : "field_vol_available_notes" } },
-        { "entity_has_field" : { "entity" : [ "contact" ], "field" : "field_vol_available_notes" } }
+        { "entity_has_field" : { "entity" : [ "contact" ], "field" : "field_vol_available_notes" } },
+        { "entity_has_field" : { "entity" : [ "form" ], "field" : "field_vol_computer_skills" } },
+        { "entity_has_field" : { "entity" : [ "contact" ], "field" : "field_vol_computer_skills" } },
+        { "entity_has_field" : { "entity" : [ "form" ], "field" : "field_vol_customer_service" } },
+        { "entity_has_field" : { "entity" : [ "contact" ], "field" : "field_vol_customer_service" } },
+        { "entity_has_field" : { "entity" : [ "form" ], "field" : "field_vol_licensed_medical_prof" } },
+        { "entity_has_field" : { "entity" : [ "contact" ], "field" : "field_vol_licensed_medical_prof" } },
+        { "entity_has_field" : { "entity" : [ "form" ], "field" : "field_vol_multilingual" } },
+        { "entity_has_field" : { "entity" : [ "contact" ], "field" : "field_vol_multilingual" } },
+        { "entity_has_field" : { "entity" : [ "form" ], "field" : "field_vol_public_speaking" } },
+        { "entity_has_field" : { "entity" : [ "contact" ], "field" : "field_vol_public_speaking" } },
+        { "entity_has_field" : { "entity" : [ "form" ], "field" : "field_vol_available_weekday_even" } },
+        { "entity_has_field" : { "entity" : [ "contact" ], "field" : "field_vol_available_weekday_even" } },
+        { "entity_has_field" : { "entity" : [ "form" ], "field" : "field_vol_available_weekends" } },
+        { "entity_has_field" : { "entity" : [ "contact" ], "field" : "field_vol_available_weekends" } },
+        { "entity_has_field" : { "entity" : [ "form" ], "field" : "field_vol_med_prog_reviewer" } },
+        { "entity_has_field" : { "entity" : [ "contact" ], "field" : "field_vol_med_prog_reviewer" } },
+        { "entity_has_field" : { "entity" : [ "form" ], "field" : "field_professional_category" } },
+        { "entity_has_field" : { "entity" : [ "contact" ], "field" : "field_professional_category" } }
       ],
       "DO" : [
         { "data_set" : {
-            "data" : [ "contact:field-vol-interest-admin" ],
-            "value" : [ "form:field-vol-interest-admin" ]
-          }
-        },
-        { "data_set" : {
-            "data" : [ "contact:field-vol-interest-advocacy" ],
-            "value" : [ "form:field-vol-interest-advocacy" ]
-          }
-        },
-        { "data_set" : {
-            "data" : [ "contact:field-vol-interest-prof-review" ],
-            "value" : [ "form:field-vol-interest-prof-review" ]
-          }
-        },
-        { "data_set" : {
-            "data" : [ "contact:field-vol-interest-screening" ],
-            "value" : [ "form:field-vol-interest-screening" ]
-          }
-        },
-        { "data_set" : {
-            "data" : [ "contact:field-vol-interest-walks" ],
-            "value" : [ "form:field-vol-interest-walks" ]
-          }
-        },
-        { "data_set" : {
-            "data" : [ "contact:field-vol-interest-events" ],
-            "value" : [ "form:field-vol-interest-events" ]
-          }
-        },
-        { "data_set" : {
-            "data" : [ "contact:field-vol-available-daystimes" ],
-            "value" : [ "form:field-vol-available-daystimes" ]
-          }
-        },
-        { "data_set" : {
             "data" : [ "contact:field-vol-available-notes" ],
             "value" : [ "form:field-vol-available-notes" ]
+          }
+        },
+        { "data_set" : {
+            "data" : [ "contact:field-vol-available-weekday-days" ],
+            "value" : [ "form:field-vol-available-weekday-days" ]
+          }
+        },
+        { "data_set" : {
+            "data" : [ "contact:field-vol-available-weekday-even" ],
+            "value" : [ "form:field-vol-available-weekday-even" ]
+          }
+        },
+        { "data_set" : {
+            "data" : [ "contact:field-vol-available-weekends" ],
+            "value" : [ "form:field-vol-available-weekends" ]
+          }
+        },
+        { "data_set" : {
+            "data" : [ "contact:field-vol-available-other" ],
+            "value" : [ "form:field-vol-available-other" ]
+          }
+        },
+        { "data_set" : {
+            "data" : [ "contact:field-vol-computer-skills" ],
+            "value" : [ "form:field-vol-computer-skills" ]
+          }
+        },
+        { "data_set" : {
+            "data" : [ "contact:field-vol-customer-service" ],
+            "value" : [ "form:field-vol-customer-service" ]
+          }
+        },
+        { "data_set" : {
+            "data" : [ "contact:field-vol-licensed-medical-prof" ],
+            "value" : [ "form:field-vol-licensed-medical-prof" ]
+          }
+        },
+        { "data_set" : {
+            "data" : [ "contact:field-vol-multilingual" ],
+            "value" : [ "form:field-vol-multilingual" ]
+          }
+        },
+        { "data_set" : {
+            "data" : [ "contact:field-vol-public-speaking" ],
+            "value" : [ "form:field-vol-public-speaking" ]
+          }
+        },
+        { "data_set" : {
+            "data" : [ "contact:field-vol-fundraising-event" ],
+            "value" : [ "form:field-vol-fundraising-event" ]
+          }
+        },
+        { "data_set" : {
+            "data" : [ "contact:field-vol-media" ],
+            "value" : [ "form:field-vol-media" ]
+          }
+        },
+        { "data_set" : {
+            "data" : [ "contact:field-vol-admin-office-support" ],
+            "value" : [ "form:field-vol-admin-office-support" ]
+          }
+        },
+        { "data_set" : {
+            "data" : [ "contact:field-vol-med-prog-reviewer" ],
+            "value" : [ "form:field-vol-med-prog-reviewer" ]
+          }
+        },
+        { "data_set" : {
+            "data" : [ "contact:field-professional-category" ],
+            "value" : [ "form:field-professional-category" ]
           }
         }
       ]
@@ -124,7 +173,8 @@ function kidneys_volunteer_default_rules_configuration() {
             "data" : [ "volunteer-app:field-base-related-contact" ],
             "value" : [ "fetched-contact" ]
           }
-        }
+        },
+        { "component_rules_volunteer_app_save_vol_preferences" : { "form" : [ "volunteer-app" ], "contact" : [ "fetched-contact" ] } }
       ]
     }
   }');
@@ -170,7 +220,8 @@ function kidneys_volunteer_default_rules_configuration() {
             "data" : [ "volunteer-app:field-base-related-contact" ],
             "value" : [ "created-created" ]
           }
-        }
+        },
+        { "component_rules_volunteer_app_save_vol_preferences" : { "form" : [ "volunteer-app" ], "contact" : [ "created-created" ] } }
       ]
     }
   }');

@@ -137,13 +137,13 @@ function kidneys_volunteer_field_default_field_bases() {
     'type' => 'entityreference',
   );
 
-  // Exported field_base: 'field_vol_available_daystimes'.
-  $field_bases['field_vol_available_daystimes'] = array(
+  // Exported field_base: 'field_vol_admin_office_support'.
+  $field_bases['field_vol_admin_office_support'] = array(
     'active' => 1,
-    'cardinality' => -1,
+    'cardinality' => 1,
     'deleted' => 0,
     'entity_types' => array(),
-    'field_name' => 'field_vol_available_daystimes',
+    'field_name' => 'field_vol_admin_office_support',
     'field_permissions' => array(
       'type' => 0,
     ),
@@ -156,14 +156,13 @@ function kidneys_volunteer_field_default_field_bases() {
     'module' => 'list',
     'settings' => array(
       'allowed_values' => array(
-        1 => 'Weekday Days',
-        2 => 'Weekday Evenings',
-        3 => 'Weekends',
+        0 => '',
+        1 => '',
       ),
       'allowed_values_function' => '',
     ),
     'translatable' => 0,
-    'type' => 'list_text',
+    'type' => 'list_boolean',
   );
 
   // Exported field_base: 'field_vol_available_notes'.
@@ -186,6 +185,118 @@ function kidneys_volunteer_field_default_field_bases() {
     'settings' => array(),
     'translatable' => 0,
     'type' => 'text_long',
+  );
+
+  // Exported field_base: 'field_vol_available_other'.
+  $field_bases['field_vol_available_other'] = array(
+    'active' => 1,
+    'cardinality' => 1,
+    'deleted' => 0,
+    'entity_types' => array(),
+    'field_name' => 'field_vol_available_other',
+    'field_permissions' => array(
+      'type' => 0,
+    ),
+    'indexes' => array(
+      'value' => array(
+        0 => 'value',
+      ),
+    ),
+    'locked' => 0,
+    'module' => 'list',
+    'settings' => array(
+      'allowed_values' => array(
+        0 => '',
+        1 => '',
+      ),
+      'allowed_values_function' => '',
+    ),
+    'translatable' => 0,
+    'type' => 'list_boolean',
+  );
+
+  // Exported field_base: 'field_vol_available_weekday_days'.
+  $field_bases['field_vol_available_weekday_days'] = array(
+    'active' => 1,
+    'cardinality' => 1,
+    'deleted' => 0,
+    'entity_types' => array(),
+    'field_name' => 'field_vol_available_weekday_days',
+    'field_permissions' => array(
+      'type' => 0,
+    ),
+    'indexes' => array(
+      'value' => array(
+        0 => 'value',
+      ),
+    ),
+    'locked' => 0,
+    'module' => 'list',
+    'settings' => array(
+      'allowed_values' => array(
+        0 => '',
+        1 => '',
+      ),
+      'allowed_values_function' => '',
+    ),
+    'translatable' => 0,
+    'type' => 'list_boolean',
+  );
+
+  // Exported field_base: 'field_vol_available_weekday_even'.
+  $field_bases['field_vol_available_weekday_even'] = array(
+    'active' => 1,
+    'cardinality' => 1,
+    'deleted' => 0,
+    'entity_types' => array(),
+    'field_name' => 'field_vol_available_weekday_even',
+    'field_permissions' => array(
+      'type' => 0,
+    ),
+    'indexes' => array(
+      'value' => array(
+        0 => 'value',
+      ),
+    ),
+    'locked' => 0,
+    'module' => 'list',
+    'settings' => array(
+      'allowed_values' => array(
+        0 => '',
+        1 => '',
+      ),
+      'allowed_values_function' => '',
+    ),
+    'translatable' => 0,
+    'type' => 'list_boolean',
+  );
+
+  // Exported field_base: 'field_vol_available_weekends'.
+  $field_bases['field_vol_available_weekends'] = array(
+    'active' => 1,
+    'cardinality' => 1,
+    'deleted' => 0,
+    'entity_types' => array(),
+    'field_name' => 'field_vol_available_weekends',
+    'field_permissions' => array(
+      'type' => 0,
+    ),
+    'indexes' => array(
+      'value' => array(
+        0 => 'value',
+      ),
+    ),
+    'locked' => 0,
+    'module' => 'list',
+    'settings' => array(
+      'allowed_values' => array(
+        0 => '',
+        1 => '',
+      ),
+      'allowed_values_function' => '',
+    ),
+    'translatable' => 0,
+    'type' => 'list_boolean',
   );
 
   // Exported field_base: 'field_vol_campaign_name'.
@@ -212,13 +323,13 @@ function kidneys_volunteer_field_default_field_bases() {
     'type' => 'text',
   );
 
-  // Exported field_base: 'field_vol_interest_admin'.
-  $field_bases['field_vol_interest_admin'] = array(
+  // Exported field_base: 'field_vol_computer_skills'.
+  $field_bases['field_vol_computer_skills'] = array(
     'active' => 1,
     'cardinality' => 1,
     'deleted' => 0,
     'entity_types' => array(),
-    'field_name' => 'field_vol_interest_admin',
+    'field_name' => 'field_vol_computer_skills',
     'field_permissions' => array(
       'type' => 0,
     ),
@@ -240,13 +351,13 @@ function kidneys_volunteer_field_default_field_bases() {
     'type' => 'list_boolean',
   );
 
-  // Exported field_base: 'field_vol_interest_advocacy'.
-  $field_bases['field_vol_interest_advocacy'] = array(
+  // Exported field_base: 'field_vol_customer_service'.
+  $field_bases['field_vol_customer_service'] = array(
     'active' => 1,
     'cardinality' => 1,
     'deleted' => 0,
     'entity_types' => array(),
-    'field_name' => 'field_vol_interest_advocacy',
+    'field_name' => 'field_vol_customer_service',
     'field_permissions' => array(
       'type' => 0,
     ),
@@ -268,13 +379,42 @@ function kidneys_volunteer_field_default_field_bases() {
     'type' => 'list_boolean',
   );
 
-  // Exported field_base: 'field_vol_interest_events'.
-  $field_bases['field_vol_interest_events'] = array(
+  // Exported field_base: 'field_vol_expiration_date'.
+  $field_bases['field_vol_expiration_date'] = array(
     'active' => 1,
     'cardinality' => 1,
     'deleted' => 0,
     'entity_types' => array(),
-    'field_name' => 'field_vol_interest_events',
+    'field_name' => 'field_vol_expiration_date',
+    'indexes' => array(),
+    'locked' => 0,
+    'module' => 'date',
+    'settings' => array(
+      'cache_count' => 4,
+      'cache_enabled' => 0,
+      'granularity' => array(
+        'day' => 'day',
+        'hour' => 0,
+        'minute' => 0,
+        'month' => 'month',
+        'second' => 0,
+        'year' => 'year',
+      ),
+      'timezone_db' => '',
+      'todate' => '',
+      'tz_handling' => 'none',
+    ),
+    'translatable' => 0,
+    'type' => 'datetime',
+  );
+
+  // Exported field_base: 'field_vol_fundraising_event'.
+  $field_bases['field_vol_fundraising_event'] = array(
+    'active' => 1,
+    'cardinality' => 1,
+    'deleted' => 0,
+    'entity_types' => array(),
+    'field_name' => 'field_vol_fundraising_event',
     'field_permissions' => array(
       'type' => 0,
     ),
@@ -296,13 +436,13 @@ function kidneys_volunteer_field_default_field_bases() {
     'type' => 'list_boolean',
   );
 
-  // Exported field_base: 'field_vol_interest_prof_review'.
-  $field_bases['field_vol_interest_prof_review'] = array(
+  // Exported field_base: 'field_vol_licensed_medical_prof'.
+  $field_bases['field_vol_licensed_medical_prof'] = array(
     'active' => 1,
     'cardinality' => 1,
     'deleted' => 0,
     'entity_types' => array(),
-    'field_name' => 'field_vol_interest_prof_review',
+    'field_name' => 'field_vol_licensed_medical_prof',
     'field_permissions' => array(
       'type' => 0,
     ),
@@ -324,13 +464,13 @@ function kidneys_volunteer_field_default_field_bases() {
     'type' => 'list_boolean',
   );
 
-  // Exported field_base: 'field_vol_interest_screening'.
-  $field_bases['field_vol_interest_screening'] = array(
+  // Exported field_base: 'field_vol_med_prog_reviewer'.
+  $field_bases['field_vol_med_prog_reviewer'] = array(
     'active' => 1,
     'cardinality' => 1,
     'deleted' => 0,
     'entity_types' => array(),
-    'field_name' => 'field_vol_interest_screening',
+    'field_name' => 'field_vol_med_prog_reviewer',
     'field_permissions' => array(
       'type' => 0,
     ),
@@ -352,13 +492,13 @@ function kidneys_volunteer_field_default_field_bases() {
     'type' => 'list_boolean',
   );
 
-  // Exported field_base: 'field_vol_interest_walks'.
-  $field_bases['field_vol_interest_walks'] = array(
+  // Exported field_base: 'field_vol_media'.
+  $field_bases['field_vol_media'] = array(
     'active' => 1,
     'cardinality' => 1,
     'deleted' => 0,
     'entity_types' => array(),
-    'field_name' => 'field_vol_interest_walks',
+    'field_name' => 'field_vol_media',
     'field_permissions' => array(
       'type' => 0,
     ),
@@ -430,6 +570,34 @@ function kidneys_volunteer_field_default_field_bases() {
     'deleted' => 0,
     'entity_types' => array(),
     'field_name' => 'field_vol_opp_active',
+    'field_permissions' => array(
+      'type' => 0,
+    ),
+    'indexes' => array(
+      'value' => array(
+        0 => 'value',
+      ),
+    ),
+    'locked' => 0,
+    'module' => 'list',
+    'settings' => array(
+      'allowed_values' => array(
+        0 => '',
+        1 => '',
+      ),
+      'allowed_values_function' => '',
+    ),
+    'translatable' => 0,
+    'type' => 'list_boolean',
+  );
+
+  // Exported field_base: 'field_vol_public_speaking'.
+  $field_bases['field_vol_public_speaking'] = array(
+    'active' => 1,
+    'cardinality' => 1,
+    'deleted' => 0,
+    'entity_types' => array(),
+    'field_name' => 'field_vol_public_speaking',
     'field_permissions' => array(
       'type' => 0,
     ),
@@ -594,9 +762,10 @@ function kidneys_volunteer_field_default_field_bases() {
         'walk' => 'Kidney Walk',
         'golf' => 'Golf Classic',
         'Media' => 'Media',
-        'admin' => 'Administrative/Office Support',
-        'medical' => 'Medical Writer/Program Reviewer',
+        'admin' => 'Administrative, Office Support',
+        'medical' => 'Medical Writer, Program Reviewer',
         'patient' => 'Patient and Community Support',
+        'fundraiser' => 'Fundraising Event',
       ),
       'allowed_values_function' => '',
     ),
