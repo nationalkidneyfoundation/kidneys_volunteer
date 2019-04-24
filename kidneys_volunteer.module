@@ -114,7 +114,7 @@ function kidneys_volunteer_app_page($sf_id) {
     '#tag' => 'meta',
     '#attributes' => array(
       'name' => 'title',
-      'content' => 'Volunteer with the NKF',
+      'content' => 'Sign up to volunteer with the NKF: ' . $vars['title'],
     )
   );
   drupal_add_html_head($element, 'title');
@@ -125,7 +125,7 @@ function kidneys_volunteer_app_page($sf_id) {
     '#tag' => 'meta',
     '#attributes' => array(
       "property" => "og:title",
-      "content" => t("Volunteer with the NKF"),
+      "content" => t("Sign up to volunteer with the NKF"),
     ),
   );
   drupal_add_html_head($element,'og_title');
@@ -135,7 +135,7 @@ function kidneys_volunteer_app_page($sf_id) {
     '#tag' => 'meta',
     '#attributes' => array(
       "property" => "twitter:title",
-      "content" => t("Volunteer with the NKF"),
+      "content" => 'Sign up to volunteer with the NKF: ' . $vars['title'],
     ),
   );
   drupal_add_html_head($element,'twitter_title');
@@ -146,7 +146,7 @@ function kidneys_volunteer_app_page($sf_id) {
     '#tag' => 'meta',
     '#attributes' => array(
       'name' => 'description',
-      'content' => $vars['description'],
+      'content' => strip_tags($vars['description']),
     )
   );
   drupal_add_html_head($element, 'description');
@@ -156,7 +156,7 @@ function kidneys_volunteer_app_page($sf_id) {
     '#tag' => 'meta',
     '#attributes' => array(
       "property" => "og:description",
-      "content" => $vars['description']
+      "content" => strip_tags($vars['description'])
     ),
   );
   drupal_add_html_head($element,'og_description');
@@ -166,7 +166,7 @@ function kidneys_volunteer_app_page($sf_id) {
     '#tag' => 'meta',
     '#attributes' => array(
       "property" => "twitter:description",
-      "content" => $vars['description']
+      "content" => strip_tags($vars['description'])
     ),
   );
   drupal_add_html_head($element,'twitter_description');
@@ -177,7 +177,7 @@ function kidneys_volunteer_app_page($sf_id) {
     '#tag' => 'meta',
     '#attributes' => array(
       "property" => "og:image",
-      "content" => 'https://www.kidney.org/sites/default/files/volunteerhands_transparent.png',
+      "content" => 'https://www.kidney.org/sites/default/files/volunteer_social.png',
     ),
   );
 
@@ -189,7 +189,7 @@ function kidneys_volunteer_app_page($sf_id) {
     '#tag' => 'meta',
     '#attributes' => array(
       "property" => "twitter:image",
-      "content" => 'https://www.kidney.org/sites/default/files/volunteerhands_transparent.png',
+      "content" => 'https://www.kidney.org/sites/default/files/volunteer_social.png',
     ),
   );
 
