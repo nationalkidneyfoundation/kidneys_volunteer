@@ -96,6 +96,115 @@ function kidneys_volunteer_app_page($sf_id) {
 
   // Need to add metatags.
   // https://drupal.stackexchange.com/questions/37715/adding-open-graph-metatags-to-head
+
+  // Add og:image
+  $element = array(
+    '#type' => 'html_tag',
+    '#tag' => 'meta',
+    '#attributes' => array(
+      "property" => "og:url",
+      "content" => $vars['path'],
+    ),
+  );
+
+  drupal_add_html_head($element,'og_url');
+  // Add page title
+  $element = array(
+    '#type' => 'html_tag',
+    '#tag' => 'meta',
+    '#attributes' => array(
+      'name' => 'title',
+      'content' => 'Volunteer with the NKF',
+    )
+  );
+  drupal_add_html_head($element, 'title');
+
+  // Add og:title and og:description for the front page
+  $element = array(
+    '#type' => 'html_tag',
+    '#tag' => 'meta',
+    '#attributes' => array(
+      "property" => "og:title",
+      "content" => t("Volunteer with the NKF"),
+    ),
+  );
+  drupal_add_html_head($element,'og_title');
+
+  $element = array(
+    '#type' => 'html_tag',
+    '#tag' => 'meta',
+    '#attributes' => array(
+      "property" => "twitter:title",
+      "content" => t("Volunteer with the NKF"),
+    ),
+  );
+  drupal_add_html_head($element,'twitter_title');
+
+  // Add description
+  $element = array(
+    '#type' => 'html_tag',
+    '#tag' => 'meta',
+    '#attributes' => array(
+      'name' => 'description',
+      'content' => $vars['description'],
+    )
+  );
+  drupal_add_html_head($element, 'description');
+
+  $element = array(
+    '#type' => 'html_tag',
+    '#tag' => 'meta',
+    '#attributes' => array(
+      "property" => "og:description",
+      "content" => $vars['description']
+    ),
+  );
+  drupal_add_html_head($element,'og_description');
+
+  $element = array(
+    '#type' => 'html_tag',
+    '#tag' => 'meta',
+    '#attributes' => array(
+      "property" => "twitter:description",
+      "content" => $vars['description']
+    ),
+  );
+  drupal_add_html_head($element,'twitter_description');
+
+  // Add og:image
+  $element = array(
+    '#type' => 'html_tag',
+    '#tag' => 'meta',
+    '#attributes' => array(
+      "property" => "og:image",
+      "content" => 'https://www.kidney.org/sites/default/files/volunteerhands_transparent.png',
+    ),
+  );
+
+  drupal_add_html_head($element,'facebook_share_image');
+
+
+  $element = array(
+    '#type' => 'html_tag',
+    '#tag' => 'meta',
+    '#attributes' => array(
+      "property" => "twitter:image",
+      "content" => 'https://www.kidney.org/sites/default/files/volunteerhands_transparent.png',
+    ),
+  );
+
+  drupal_add_html_head($element,'twitter_image');
+  $element = array(
+    '#type' => 'html_tag',
+    '#tag' => 'meta',
+    '#attributes' => array(
+      "property" => "twitter:card",
+      "content" => 'summary_large_image',
+    ),
+  );
+
+  drupal_add_html_head($element,'twitter_card');
+
   return theme('kidneys_volunteer_app', $vars);
 }
 /**
