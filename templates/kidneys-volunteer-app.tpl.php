@@ -23,7 +23,8 @@
       <div class="max-width--xxl margin-bottom--lg bg--white rounded border border-color--gray-5 border-width--sm padding-y--xxs padding-x--xxl">
         <?php print $form;?>
       </div>
-      <p class="max-width--xxl font-style--italic">By submitting this form, I agree to the terms of NKF’s Volunteer Service Agreement and Volunteer Code of Conduct.</p>
+      <p class="max-width--xxl font-style--italic">By submitting this form, I agree to the terms of NKF’s <a href="https://www.kidney.org/sites/default/files/nkf_volunteer_service_agreement.pdf
+">Volunteer Service Agreement</a> and Volunteer Code of Conduct.</p>
     </div>
     <div class="width--100 margin-y--xxl border-top padding-y--lg">
       <div class=" max-width--xxl center">
