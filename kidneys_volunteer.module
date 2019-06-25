@@ -45,7 +45,6 @@ function kidneys_volunteer_load_entity_from_sf($sf_id) {
   if ($mapping) {
     $entity = entity_load_single($mapping->entity_type, $mapping->entity_id);
     if ($entity) {
-      dpm($entity);
       return entity_metadata_wrapper($mapping->entity_type, $entity);
     }
   }
