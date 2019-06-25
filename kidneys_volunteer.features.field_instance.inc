@@ -188,7 +188,7 @@ function kidneys_volunteer_field_default_field_instances() {
     'entity_type' => 'entityform',
     'field_name' => 'field_base_phone',
     'label' => 'Phone',
-    'required' => 1,
+    'required' => 0,
     'settings' => array(
       'text_processing' => 0,
       'user_register_form' => FALSE,
@@ -240,6 +240,38 @@ function kidneys_volunteer_field_default_field_instances() {
       ),
       'type' => 'entityreference_autocomplete',
       'weight' => 10,
+    ),
+  );
+
+  // Exported field_instance:
+  // 'entityform-volunteer_application-field_connection_kidney_disease'.
+  $field_instances['entityform-volunteer_application-field_connection_kidney_disease'] = array(
+    'bundle' => 'volunteer_application',
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'list',
+        'settings' => array(),
+        'type' => 'list_default',
+        'weight' => 39,
+      ),
+    ),
+    'entity_type' => 'entityform',
+    'field_name' => 'field_connection_kidney_disease',
+    'label' => 'Connection to Kidney Disease',
+    'required' => 1,
+    'settings' => array(
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'options',
+      'settings' => array(),
+      'type' => 'options_select',
+      'weight' => 6,
     ),
   );
 
@@ -2141,6 +2173,7 @@ function kidneys_volunteer_field_default_field_instances() {
   t('Body');
   t('Campaign');
   t('Computer Skills');
+  t('Connection to Kidney Disease');
   t('Customer Service');
   t('Customer Service Skills');
   t('Email');

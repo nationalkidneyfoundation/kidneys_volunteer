@@ -61,7 +61,7 @@ function kidneys_volunteer_default_page_manager_pages() {
     'name' => 'panel',
   );
   $display = new panels_display();
-  $display->layout = 'flex-center';
+  $display->layout = 'widescreen';
   $display->layout_settings = array();
   $display->panel_settings = array(
     'style_settings' => array(
@@ -71,6 +71,16 @@ function kidneys_volunteer_default_page_manager_pages() {
       'right' => NULL,
       'bottom' => NULL,
       'main' => NULL,
+      'one' => NULL,
+      'two' => NULL,
+      'three' => NULL,
+      'four' => NULL,
+      'five' => NULL,
+      'six' => NULL,
+      'seven' => NULL,
+      'eight' => NULL,
+      'nine' => NULL,
+      'ten' => NULL,
     ),
   );
   $display->cache = array();
@@ -82,7 +92,7 @@ function kidneys_volunteer_default_page_manager_pages() {
   $display->panels = array();
   $pane = new stdClass();
   $pane->pid = 'new-3ec58122-9acf-4d6c-aa97-d581a4c5e4fa';
-  $pane->panel = 'main';
+  $pane->panel = 'one';
   $pane->type = 'custom';
   $pane->subtype = 'custom';
   $pane->shown = TRUE;
@@ -91,19 +101,33 @@ function kidneys_volunteer_default_page_manager_pages() {
     'admin_title' => '',
     'title' => '',
     'title_heading' => 'h2',
-    'body' => '<div>
-<p>Thank you for your interest in volunteering your time, talent and expertise with the National Kidney Foundation (NKF). You\'re already on your way to making a measurable impact in the kidney community!</p>
- 
-<p>We have received and are reviewing the information that you\'ve submitted. A member of our team will be in touch shortly to get you started on your path of service with NKF!</p>
- 
-<p>In the interim, please contact <a href="mailto:volunteers@kidney.org">volunteers@kidney.org</a> with any questions you may have.</p>
- 
-<p>Thank you for taking up the fight against kidney disease by our side. </p>
- 
-<p>Gratefully,<br>
-NKF Team</p>
-</div>
-',
+    'body' => '<div class="container">
+    <div class="prose center">
+        <div class="text-align--center">
+            <img src="https://www.kidney.org/sites/default/files/volunteerhands_transparent.png" alt="">
+            <div class="display--flex margin-y--md align-items--center justify-content--center">
+                <div class="font-size--xxl bold padding-right--sm">
+                    Thanks
+                </div>
+                <div class="width--15">
+                    <i class="border-width--sn border-style--solid border-color--lime icon-ok color--lime circle width--md height--md font-size--xxxl "></i>
+                </div>
+            </div>
+        </div>
+        <div class="margin-bottom--md">
+            <p>Thank you for your interest in volunteering your time, talent and expertise with the National Kidney Foundation (NKF). You\'re already on your way to making a measurable impact in the kidney community!</p>
+
+            <p>We have received and are reviewing the information that you\'ve submitted. A member of our team will be in touch shortly to get you started on your path of service with NKF!</p>
+
+            <p>In the interim, please contact <a href="mailto:volunteers@kidney.org">volunteers@kidney.org</a> with any questions you may have.</p>
+
+            <p>Thank you for taking up the fight against kidney disease by our side. </p>
+
+            <p>Gratefully,
+                <br> NKF Team</p>
+        </div>
+    </div>
+</div>',
     'format' => 'full_html',
     'substitute' => 1,
   );
@@ -111,14 +135,17 @@ NKF Team</p>
   $pane->style = array(
     'settings' => NULL,
   );
-  $pane->css = array();
+  $pane->css = array(
+    'css_id' => '',
+    'css_class' => 'width--100',
+  );
   $pane->extras = array();
   $pane->position = 0;
   $pane->locks = array();
   $pane->uuid = '3ec58122-9acf-4d6c-aa97-d581a4c5e4fa';
   $display->content['new-3ec58122-9acf-4d6c-aa97-d581a4c5e4fa'] = $pane;
-  $display->panels['main'][0] = 'new-3ec58122-9acf-4d6c-aa97-d581a4c5e4fa';
-  $display->hide_title = PANELS_TITLE_FIXED;
+  $display->panels['one'][0] = 'new-3ec58122-9acf-4d6c-aa97-d581a4c5e4fa';
+  $display->hide_title = PANELS_TITLE_NONE;
   $display->title_pane = '0';
   $handler->conf['display'] = $display;
   $page->default_handlers[$handler->name] = $handler;

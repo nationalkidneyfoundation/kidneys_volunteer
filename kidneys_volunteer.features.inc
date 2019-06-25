@@ -803,9 +803,9 @@ function kidneys_volunteer_default_salesforce_mapping() {
           "htmlFormatted" : false,
           "idLookup" : false,
           "inlineHelpText" : null,
-          "label" : "Role Type",
+          "label" : "Role Category",
           "length" : 255,
-          "name" : "Role_Type__c",
+          "name" : "Role_Category__c",
           "nameField" : false,
           "namePointing" : false,
           "nillable" : true,
@@ -814,51 +814,30 @@ function kidneys_volunteer_default_salesforce_mapping() {
             {
               "active" : true,
               "defaultValue" : false,
-              "label" : "Social Event",
+              "label" : "Administrative\\/office support",
               "validFor" : null,
-              "value" : "social"
+              "value" : "Administrative\\/office support"
             },
             {
               "active" : true,
               "defaultValue" : false,
-              "label" : "Kidney Walk",
+              "label" : "Fundraising Event",
               "validFor" : null,
-              "value" : "walk"
+              "value" : "Fundraising Event"
             },
             {
               "active" : true,
               "defaultValue" : false,
-              "label" : "Golf Classic",
+              "label" : "Media Volunteer",
               "validFor" : null,
-              "value" : "golf"
-            },
-            {
-              "active" : true,
-              "defaultValue" : false,
-              "label" : "Media",
-              "validFor" : null,
-              "value" : "Media"
-            },
-            {
-              "active" : true,
-              "defaultValue" : false,
-              "label" : "Administrative\\/Office Support",
-              "validFor" : null,
-              "value" : "admin"
-            },
-            {
-              "active" : true,
-              "defaultValue" : false,
-              "label" : "Medical Writer\\/Program Reviewer",
-              "validFor" : null,
-              "value" : "medical"
+              "value" : "Media Volunteer"
             },
             {
               "active" : true,
               "defaultValue" : false,
               "label" : "Patient and Community Support",
               "validFor" : null,
-              "value" : "patient"
+              "value" : "Patient and Community Support"
             }
           ],
           "precision" : 0,

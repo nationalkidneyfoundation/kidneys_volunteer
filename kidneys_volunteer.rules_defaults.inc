@@ -50,7 +50,9 @@ function kidneys_volunteer_default_rules_configuration() {
         { "entity_has_field" : { "entity" : [ "form" ], "field" : "field_vol_med_prog_reviewer" } },
         { "entity_has_field" : { "entity" : [ "contact" ], "field" : "field_vol_med_prog_reviewer" } },
         { "entity_has_field" : { "entity" : [ "form" ], "field" : "field_professional_category" } },
-        { "entity_has_field" : { "entity" : [ "contact" ], "field" : "field_professional_category" } }
+        { "entity_has_field" : { "entity" : [ "contact" ], "field" : "field_professional_category" } },
+        { "entity_has_field" : { "entity" : [ "form" ], "field" : "field_connection_kidney_disease" } },
+        { "entity_has_field" : { "entity" : [ "contact" ], "field" : "field_connection_kidney_disease" } }
       ],
       "DO" : [
         { "data_set" : {
@@ -126,6 +128,11 @@ function kidneys_volunteer_default_rules_configuration() {
         { "data_set" : {
             "data" : [ "contact:field-professional-category" ],
             "value" : [ "form:field-professional-category" ]
+          }
+        },
+        { "data_set" : {
+            "data" : [ "contact:field-connection-kidney-disease" ],
+            "value" : [ "form:field-connection-kidney-disease" ]
           }
         }
       ]

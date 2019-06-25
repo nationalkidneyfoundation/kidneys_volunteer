@@ -21,7 +21,7 @@ function kidneys_volunteer_field_group_info() {
   $field_group->mode = 'form';
   $field_group->parent_name = '';
   $field_group->data = array(
-    'label' => 'Tell us a bit about yourself',
+    'label' => 'Tell us about yourself',
     'weight' => '0',
     'children' => array(
       0 => 'field_base_address',
@@ -29,10 +29,11 @@ function kidneys_volunteer_field_group_info() {
       2 => 'field_base_first_name',
       3 => 'field_base_last_name',
       4 => 'field_base_phone',
+      5 => 'field_connection_kidney_disease',
     ),
     'format_type' => 'div',
     'format_settings' => array(
-      'label' => 'Tell us a bit about yourself',
+      'label' => 'Tell us about yourself',
       'instance_settings' => array(
         'required_fields' => 0,
         'id' => '',
@@ -208,14 +209,10 @@ function kidneys_volunteer_field_group_info() {
     'label' => 'How are you interested in volunteering?',
     'weight' => '6',
     'children' => array(
-      0 => 'field_vol_patient_com_support',
-      1 => 'field_vol_social_events',
-      2 => 'field_vol_kidney_walk',
-      3 => 'field_vol_golf_classic',
-      4 => 'field_vol_media',
-      5 => 'field_vol_admin_office_support',
-      6 => 'field_vol_med_prog_reviewer',
-      7 => 'field_vol_fundraising_event',
+      0 => 'field_vol_media',
+      1 => 'field_vol_admin_office_support',
+      2 => 'field_vol_med_prog_reviewer',
+      3 => 'field_vol_fundraising_event',
     ),
     'format_type' => 'div',
     'format_settings' => array(
@@ -275,7 +272,7 @@ function kidneys_volunteer_field_group_info() {
   // Included for use with string extractors like potx.
   t('How are you interested in volunteering?');
   t('Skills: tell us about yourself');
-  t('Tell us a bit about yourself');
+  t('Tell us about yourself');
   t('Volunteer Availability');
   t('Volunteer Interests');
   t('Volunteer Skills');

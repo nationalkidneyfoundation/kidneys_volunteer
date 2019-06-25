@@ -191,7 +191,7 @@ function kidneys_volunteer_views_default_views() {
   $handler->display->display_options['fields']['nothing']['label'] = 'Program';
   $handler->display->display_options['fields']['nothing']['alter']['text'] = '<div class="display--flex flex-wrap--nowrap flex-direction--row align-items--center justify-content--space-between">
   <div class="">[field_vol_type]</div> 
-  <div class="md--show"> <a class="margin-right--md square--sm circle border-width--xs border-style--solid border-color--orange" href="/volunteer/app/[salesforce_id]"><i class="color--orange icon-right-open font-size--sm"></i></a></div>
+  <div class="md--show"> <a class="margin-left--md square--sm circle border-width--xs border-style--solid border-color--orange" href="/volunteer/app/[salesforce_id]"><i class="color--orange icon-right-open font-size--sm"></i></a></div>
 </div>';
   $handler->display->display_options['fields']['nothing']['element_label_colon'] = FALSE;
   /* Sort criterion: Content: Geofield (field_base_geofield) - proximity */
@@ -555,7 +555,7 @@ function kidneys_volunteer_views_default_views() {
 </div>'),
     t('<div class="display--flex flex-wrap--nowrap flex-direction--row align-items--center justify-content--space-between">
   <div class="">[field_vol_type]</div> 
-  <div class="md--show"> <a class="margin-right--md square--sm circle border-width--xs border-style--solid border-color--orange" href="/volunteer/app/[salesforce_id]"><i class="color--orange icon-right-open font-size--sm"></i></a></div>
+  <div class="md--show"> <a class="margin-left--md square--sm circle border-width--xs border-style--solid border-color--orange" href="/volunteer/app/[salesforce_id]"><i class="color--orange icon-right-open font-size--sm"></i></a></div>
 </div>'),
     t('All'),
     t('Find an opportunity near you'),
