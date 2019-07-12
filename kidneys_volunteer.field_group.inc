@@ -59,7 +59,7 @@ function kidneys_volunteer_field_group_info() {
   $field_group->mode = 'form';
   $field_group->parent_name = '';
   $field_group->data = array(
-    'label' => 'Skills: tell us about yourself',
+    'label' => 'What are your special skills?',
     'weight' => '7',
     'children' => array(
       0 => 'field_vol_public_speaking',
@@ -71,7 +71,7 @@ function kidneys_volunteer_field_group_info() {
     ),
     'format_type' => 'div',
     'format_settings' => array(
-      'label' => 'Skills: tell us about yourself',
+      'label' => 'What are your special skills?',
       'instance_settings' => array(
         'required_fields' => 0,
         'id' => '',
@@ -206,7 +206,7 @@ function kidneys_volunteer_field_group_info() {
   $field_group->mode = 'form';
   $field_group->parent_name = '';
   $field_group->data = array(
-    'label' => 'How are you interested in volunteering?',
+    'label' => 'How would you like to help?',
     'weight' => '6',
     'children' => array(
       0 => 'field_vol_media',
@@ -216,7 +216,7 @@ function kidneys_volunteer_field_group_info() {
     ),
     'format_type' => 'div',
     'format_settings' => array(
-      'label' => 'How are you interested in volunteering?',
+      'label' => 'How would you like to help?',
       'instance_settings' => array(
         'required_fields' => 0,
         'id' => '',
@@ -270,12 +270,12 @@ function kidneys_volunteer_field_group_info() {
 
   // Translatables
   // Included for use with string extractors like potx.
-  t('How are you interested in volunteering?');
-  t('Skills: tell us about yourself');
+  t('How would you like to help?');
   t('Tell us about yourself');
   t('Volunteer Availability');
   t('Volunteer Interests');
   t('Volunteer Skills');
+  t('What are your special skills?');
   t('When are you available?');
 
   return $field_groups;

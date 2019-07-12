@@ -355,7 +355,7 @@ function kidneys_volunteer_form_alter(&$form, &$form_state, $form_id) {
     $form['actions']['#attributes']['class'][] = 'text-align--center sm--hide ';
     $form['actions']['submit']['#attributes']['class'][] = 'grid-cell button--green caps bold';
 
-
+    $form['#attributes']['class'][] = 'width--100';
 
     array_unshift($form['#validate'], 'kidneys_volunteer_app_form_validate');
   }
