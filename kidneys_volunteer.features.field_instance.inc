@@ -1556,6 +1556,44 @@ function kidneys_volunteer_field_default_field_instances() {
   );
 
   // Exported field_instance:
+  // 'node-volunteer_opportunity-field_vol_type_detail'.
+  $field_instances['node-volunteer_opportunity-field_vol_type_detail'] = array(
+    'bundle' => 'volunteer_opportunity',
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'list',
+        'settings' => array(),
+        'type' => 'list_default',
+        'weight' => 15,
+      ),
+      'teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+    ),
+    'entity_type' => 'node',
+    'field_name' => 'field_vol_type_detail',
+    'label' => 'Type Detail',
+    'required' => 0,
+    'settings' => array(
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'options',
+      'settings' => array(),
+      'type' => 'options_select',
+      'weight' => 60,
+    ),
+  );
+
+  // Exported field_instance:
   // 'redhen_contact-general-field_vol_admin_office_support'.
   $field_instances['redhen_contact-general-field_vol_admin_office_support'] = array(
     'bundle' => 'general',
@@ -2199,6 +2237,7 @@ function kidneys_volunteer_field_default_field_instances() {
   t('Related Volunteer Opportunity');
   t('Status');
   t('Type');
+  t('Type Detail');
   t('Weekday Days');
   t('Weekday Evenings');
   t('Weekends');

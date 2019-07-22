@@ -758,14 +758,43 @@ function kidneys_volunteer_field_default_field_bases() {
     'module' => 'list',
     'settings' => array(
       'allowed_values' => array(
-        'social' => 'Special Event',
+        'Media' => 'Media',
+        'admin' => 'Administrative, Office Support',
+        'patient' => 'Patient and Community Support',
+        'fundraiser' => 'Fundraising Event',
+      ),
+      'allowed_values_function' => '',
+    ),
+    'translatable' => 0,
+    'type' => 'list_text',
+  );
+
+  // Exported field_base: 'field_vol_type_detail'.
+  $field_bases['field_vol_type_detail'] = array(
+    'active' => 1,
+    'cardinality' => 1,
+    'deleted' => 0,
+    'entity_types' => array(),
+    'field_name' => 'field_vol_type_detail',
+    'field_permissions' => array(
+      'type' => 0,
+    ),
+    'indexes' => array(
+      'value' => array(
+        0 => 'value',
+      ),
+    ),
+    'locked' => 0,
+    'module' => 'list',
+    'settings' => array(
+      'allowed_values' => array(
+        'social' => 'Social Event',
         'walk' => 'Kidney Walk',
         'golf' => 'Golf Classic',
         'Media' => 'Media',
-        'admin' => 'Administrative, Office Support',
-        'medical' => 'Medical Writer, Program Reviewer',
+        'admin' => 'Administrative/Office Support',
+        'medial' => 'Medical Writer/Program Reviewer',
         'patient' => 'Patient and Community Support',
-        'fundraiser' => 'Fundraising Event',
       ),
       'allowed_values_function' => '',
     ),

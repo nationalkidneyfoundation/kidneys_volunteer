@@ -1174,6 +1174,109 @@ function kidneys_volunteer_default_salesforce_mapping() {
         },
         "key" : false,
         "direction" : "sf_drupal"
+      },
+      {
+        "drupal_field" : {
+          "fieldmap_type" : "property",
+          "fieldmap_value" : "field_vol_type_detail"
+        },
+        "salesforce_field" : {
+          "autoNumber" : false,
+          "byteLength" : 765,
+          "calculated" : false,
+          "calculatedFormula" : null,
+          "cascadeDelete" : false,
+          "caseSensitive" : false,
+          "controllerName" : null,
+          "createable" : true,
+          "custom" : true,
+          "defaultValue" : null,
+          "defaultValueFormula" : null,
+          "defaultedOnCreate" : false,
+          "dependentPicklist" : false,
+          "deprecatedAndHidden" : false,
+          "digits" : 0,
+          "displayLocationInDecimal" : false,
+          "externalId" : false,
+          "filterable" : true,
+          "groupable" : true,
+          "htmlFormatted" : false,
+          "idLookup" : false,
+          "inlineHelpText" : null,
+          "label" : "Role Type",
+          "length" : 255,
+          "name" : "Role_Type__c",
+          "nameField" : false,
+          "namePointing" : false,
+          "nillable" : true,
+          "permissionable" : true,
+          "picklistValues" : [
+            {
+              "active" : true,
+              "defaultValue" : false,
+              "label" : "Social Event",
+              "validFor" : null,
+              "value" : "social"
+            },
+            {
+              "active" : true,
+              "defaultValue" : false,
+              "label" : "Kidney Walk",
+              "validFor" : null,
+              "value" : "walk"
+            },
+            {
+              "active" : true,
+              "defaultValue" : false,
+              "label" : "Golf Classic",
+              "validFor" : null,
+              "value" : "golf"
+            },
+            {
+              "active" : true,
+              "defaultValue" : false,
+              "label" : "Media",
+              "validFor" : null,
+              "value" : "Media"
+            },
+            {
+              "active" : true,
+              "defaultValue" : false,
+              "label" : "Administrative\\/Office Support",
+              "validFor" : null,
+              "value" : "admin"
+            },
+            {
+              "active" : true,
+              "defaultValue" : false,
+              "label" : "Medical Writer\\/Program Reviewer",
+              "validFor" : null,
+              "value" : "medical"
+            },
+            {
+              "active" : true,
+              "defaultValue" : false,
+              "label" : "Patient and Community Support",
+              "validFor" : null,
+              "value" : "patient"
+            }
+          ],
+          "precision" : 0,
+          "referenceTo" : [],
+          "relationshipName" : null,
+          "relationshipOrder" : null,
+          "restrictedDelete" : false,
+          "restrictedPicklist" : true,
+          "scale" : 0,
+          "soapType" : "xsd:string",
+          "sortable" : true,
+          "type" : "picklist",
+          "unique" : false,
+          "updateable" : true,
+          "writeRequiresMasterRead" : false
+        },
+        "key" : false,
+        "direction" : "sf_drupal"
       }
     ],
     "pull_trigger_date" : "LastModifiedDate",
