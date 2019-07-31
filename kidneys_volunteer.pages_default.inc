@@ -476,7 +476,7 @@ margin-bottom: 1rem;
   $display->title = '';
   $display->uuid = '36da94b3-7d57-4c84-b727-39cadf4e7ab2';
   $display->storage_type = 'page_manager';
-  $display->storage_id = 'page_volunteer_opps_by_campaign__panel';
+  $display->storage_id = 'page_volunteer_opps_by_office__panel_context_fd73405b-5d7d-4d42-a74b-a825a227d835';
   $display->content = array();
   $display->panels = array();
   $pane = new stdClass();
