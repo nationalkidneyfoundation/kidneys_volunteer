@@ -16,7 +16,6 @@
           <div class="font-size--sm  caps color--gray-4 bold">NKF Office</div>
           <div><?php print $office; ?></div>
         </div>
-        <!--<img src="https://api.mapbox.com/styles/v1/mapbox/streets-v9/static/<?php print $lon; ?>,<?php print $lat; ?>,13/400x200@2x?access_token=pk.eyJ1IjoibmtmIiwiYSI6ImNpeXlycHIwdTAwdGozMnBvcHVyb3dsMHUifQ.Ga4ktI5QmMOipTSAG1If7g">-->
       <?php endif;?>
     </div>
     <div class="md--width--50 width--100 padding-bottom--lg sm--padding-left--lg">
