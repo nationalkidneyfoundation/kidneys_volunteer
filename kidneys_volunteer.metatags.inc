@@ -2,6 +2,7 @@
 
 
 function kidneys_volunteer_add_metatags($version = 'main', $name = '') {
+  $base = $GLOBALS['base_url'];
   $path = $base . '/' . drupal_get_path('module', 'kidneys_volunteer');
   $url = url(current_path(), array('absolute' => TRUE, 'query' => drupal_get_query_parameters()));
 
@@ -74,7 +75,7 @@ function kidneys_volunteer_add_metatags($version = 'main', $name = '') {
     case 'main':
     default:
       $title = 'Sign up to volunteer with National Kidney Foundation';
-      $description = 'Take control of your kidney health. Answer a few questions and we’ll provide you with personalized information about kidneys and your health.';
+      $description = 'Better lives and healthier futures start with our volunteers. Become an NKF volunteer and help us carry out our mission.';
       $image = $path . '/images/meta-main.png';
       break;
   }
